@@ -1,0 +1,45 @@
+.contactForm  {
+    width: 100%;
+}
+
+.contactForm__form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px 20%;
+}
+
+.contactForm__contactList {
+    display: flex;
+    margin: 5px;
+}
+
+.contactForm__contactList > p{
+    margin-left: 10px;
+}
+
+
+.contactForm__formP {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 40px;
+    color: gray;
+    text-align: center;
+}
+
+.contactForm__formInput {
+    margin: 10px 0 !important;
+}
+.red {
+    color: red;
+}
+
+.contactForm__button {
+    width: 200px;
+    padding: 20 20px !important;
+    margin-top: 10px !important;
+    font-size: 20px !important;
+    font-weight: 300 !important;
+    font-family: 'Noto Sans TC', sans-serif !important;
+    background-color: #007935 !important;
+    align-self: center;   
+}

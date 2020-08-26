@@ -1,0 +1,127 @@
+.home {
+    margin: 0 auto; /* center all children */
+    background-color: rgb(234, 237, 237);
+    /* max-width: 1500px; */
+}
+
+.home__headContainer {
+    background-image: url('../images/bg.png');
+    background-size: cover;
+    display: flex;
+    padding: 0 10%;
+    box-shadow: 0 0 10px 10px darkgray;
+    margin-top: 50px;
+}
+
+.home__contentBox {
+    margin-top:50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home__contentBoxP {
+    margin: auto auto;
+}
+
+.home__contentBoxP > p {
+    margin: 15px 0;
+}
+
+.home__freeShippongImg {
+    width: 200px;
+    object-fit: contain;
+}
+
+.home__contentBoxText {
+    font-family: 'Noto Sans TC', sans-serif;
+    color: #2F4F4F;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px black;
+    width:70%;
+    font-size: 35px;
+    font-weight: 400;
+    text-align: left;
+    margin: 50px auto;
+    padding: 30px;
+    display: flex;
+}
+
+.home__contextBoxText2 {
+    margin: 0 auto;
+    margin-top: 50px;
+    font-size: 35px;
+    font-weight: 400;
+    color: white;
+    background-color: #007935;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.home__contentBoxImage {
+    display: flex;
+    margin-top:20px;
+    width: 85%;
+    min-width: 300px;
+}
+
+@media (max-width: 960px) {
+    .home__contentBoxText{
+        margin-top: 90px;
+    }
+    .home__contentBox{
+        font-size: 23px;
+        margin: 20px auto;
+        margin-top: 50px;
+    }
+    .home__contentBoxP{
+        width:100%;
+        font-size: 22px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .home__contextBoxText2 {
+        font-size: 25px;
+    }
+    .home__contentBoxImage {
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 10px;
+    }
+    .home__contentBoxText {
+        flex-direction: column;
+        text-align: center;
+    }
+    .home__freeShippongImg {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .home__contentBoxImage {
+        margin: 0 auto;
+    }
+
+    .home__imgSection {
+        display: flex;
+        object-fit: contain;
+        align-items: flex-end;
+    }
+
+    .home__contentBoxP > p {
+        margin: 0 auto;
+        font-size: 25px;
+    }
+
+    .home__contextBoxText2 {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+
+    .header__navItem > span{
+        font-size: 15px;
+    }
+
+    
+}

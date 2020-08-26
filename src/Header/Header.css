@@ -1,0 +1,130 @@
+.header {
+    background-color: #FFF;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    padding: 0 10%;
+    z-index: 1; /* nothing showing above of this header */
+    border-bottom: 3px solid green;
+    box-shadow: 2px 2px 3px 2px gray;
+}
+
+.header__logo {
+    max-width: 150px;
+    object-fit: contain; 
+}
+
+.header__container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.header__shoppingCart {
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid lightgray;
+}
+
+.header__navItem {
+    text-decoration: none;
+    padding: 0 20px;
+    font-family: 'Noto Sans TC', sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 300;
+    color: #007935 !important;
+    
+}
+
+.header__shoppingCartIcon{
+    color: #007935;
+}
+
+.header__drawer {
+    width: 300px;
+}
+
+.overflow-scroll {
+    height: 100%;
+    overflow: scroll;
+}
+
+.cartList__title {
+    margin: 10px;
+}
+
+.cartList__itemSection {
+    display: flex;
+    width: 100%;
+}
+
+.cartList__emptyText {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.cartList__removeBtn:hover {
+    color: red;
+}
+
+.cartList__totalPriceSection {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+ .cartList__totalPrice {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+} 
+
+.cartList__continueBtn {
+    background-color: lightgray !important;
+    width: 90% !important;
+    margin: 10px auto !important;
+    border-radius: 5px !important;
+    pointer-events: fill;
+}
+.drawer__OrderListConfirmBtn {
+    background-color: green !important;
+    color: white !important;
+    width: 100% !important;
+    margin: 10px auto !important;
+    border-radius: 5px !important;
+    padding: 8px 16px !important;
+    font-size: 1rem !important;
+}
+
+#drawer__orderListForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 10px auto !important;
+    padding: 0;
+}
+
+.drawer__orderListTitle {
+    text-align: center;
+}
+
+.drawer__formInput {
+    display: flex;
+    margin: 3px !important;
+}
+
+@media (max-width: 960px) {
+    .header__container{
+        justify-content: center;
+        margin: 0;
+    }
+    .header__logo {
+        margin: 0 auto;
+        justify-self: center;
+    }
+    .header__shoppingCart {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+    }
+}

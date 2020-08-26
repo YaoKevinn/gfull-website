@@ -1,0 +1,77 @@
+.contactIcon {
+    width: 70px;
+    position: sticky;
+    top: 25%;
+    right: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -330px;
+    z-index: 1; /* nothing showing above of this header */
+}
+
+
+.contactIcon__icon {
+    font-size: 70px !important;
+}
+
+.iconWhatsapp {
+    border-radius: 0 20px 0 0;
+    background-color: #27c34b;
+    color: white;
+}
+
+.iconWhatsapp:hover{
+    width:130px;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+.iconMail {
+    background-color: white;
+    color: #dc4b3f;
+}
+
+.iconMail:hover{
+    width:130px;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+.iconFacebook {
+    background-color: #0e8bf1;
+    color: white;
+}
+
+.iconFacebook:hover{
+    width:130px;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+.iconPhone {
+    border-radius: 0 0 20px 0;
+    background-color:#1b407d;
+    color: white;
+}
+
+.iconPhone:hover{
+    width:130px;
+    cursor: pointer;
+    transition: width 1s;
+}
+
+
+.iconButton {
+    padding: 0px !important;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 960px) {
+    .contactIcon {
+        width: 40px;
+    }
+    
+    .contactIcon__icon {
+        font-size: 40px !important;
+    }
+}
