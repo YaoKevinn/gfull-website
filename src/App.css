@@ -6,7 +6,7 @@
   max-width: 1500px;
   margin: 50px auto;
   overflow: hidden;
-  height: auto;
+  height: auto !important;
 }
 
 .app__productSectionTitle {
