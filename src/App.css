@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  margin-right: 0px;
+  overflow-x: hidden;
 }
 
 .app__productSection {
@@ -17,6 +17,7 @@
 }
 
 @media (max-width: 960px) {
+
   .app__productSectionTitle{
     text-align: center;
   }
