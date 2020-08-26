@@ -102,7 +102,7 @@ class App extends Component {
           price1kg:160,
           discountKgs:5,
           priceKgs:750,
-        },
+        }
     ],
     shoppingCart:[],
     totalPriceInCart:0,

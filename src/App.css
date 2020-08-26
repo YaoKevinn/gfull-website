@@ -1,11 +1,12 @@
 * {
   margin: 0;
-  overflow-x: hidden;
 }
 
 .app__productSection {
   max-width: 1500px;
   margin: 50px auto;
+  overflow: hidden;
+  height: auto;
 }
 
 .app__productSectionTitle {
