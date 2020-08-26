@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/gfull-website/static/css/main.4b9423fc.chunk.css",
+    "main.js": "/gfull-website/static/js/main.a7b90609.chunk.js",
+    "main.js.map": "/gfull-website/static/js/main.a7b90609.chunk.js.map",
+    "runtime-main.js": "/gfull-website/static/js/runtime-main.7f68f24a.js",
+    "runtime-main.js.map": "/gfull-website/static/js/runtime-main.7f68f24a.js.map",
+    "static/js/2.7f4d31b2.chunk.js": "/gfull-website/static/js/2.7f4d31b2.chunk.js",
+    "static/js/2.7f4d31b2.chunk.js.map": "/gfull-website/static/js/2.7f4d31b2.chunk.js.map",
+    "index.html": "/gfull-website/index.html",
+    "precache-manifest.dddbaa7af1fe0ce6022ed16ced0fd255.js": "/gfull-website/precache-manifest.dddbaa7af1fe0ce6022ed16ced0fd255.js",
+    "service-worker.js": "/gfull-website/service-worker.js",
+    "static/css/main.4b9423fc.chunk.css.map": "/gfull-website/static/css/main.4b9423fc.chunk.css.map",
+    "static/js/2.7f4d31b2.chunk.js.LICENSE.txt": "/gfull-website/static/js/2.7f4d31b2.chunk.js.LICENSE.txt",
+    "static/media/aduki.jpg": "/gfull-website/static/media/aduki.784f8a2e.jpg",
+    "static/media/almendraNonPareil.jpg": "/gfull-website/static/media/almendraNonPareil.d46b2a5e.jpg",
+    "static/media/arandanosRojos.jpg": "/gfull-website/static/media/arandanosRojos.ea07a9b8.jpg",
+    "static/media/Home.css": "/gfull-website/static/media/bg.683be906.png",
+    "static/media/castania.jpg": "/gfull-website/static/media/castania.b3d6472e.jpg",
+    "static/media/ciruela.jpg": "/gfull-website/static/media/ciruela.60183f8d.jpg",
+    "static/media/contentBox.png": "/gfull-website/static/media/contentBox.b2085bd4.png",
+    "static/media/logo.png": "/gfull-website/static/media/logo.cfc6507c.png",
+    "static/media/mani.jpg": "/gfull-website/static/media/mani.ec1423f7.jpg",
+    "static/media/maniSinSal.jpg": "/gfull-website/static/media/maniSinSal.37cc22f2.jpg",
+    "static/media/nuezMariposa.jpg": "/gfull-website/static/media/nuezMariposa.8d39f63f.jpg",
+    "static/media/pistacho.jpg": "/gfull-website/static/media/pistacho.96e348fb.jpg",
+    "static/media/porotoMung.jpg": "/gfull-website/static/media/porotoMung.a2233dea.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f68f24a.js",
+    "static/js/2.7f4d31b2.chunk.js",
+    "static/css/main.4b9423fc.chunk.css",
+    "static/js/main.a7b90609.chunk.js"
+  ]
+}
