@@ -9,12 +9,14 @@
     z-index: 1; /* nothing showing above of this header */
 }
 
-
-.contactIcon__icon {
-    font-size: 70px !important;
+.iconButton {
+    padding: 0px !important;
+    margin: 0 auto !important;
+    border-radius: 0 !important;
 }
 
 .iconWhatsapp {
+    font-size: 70px !important;
     border-radius: 0 20px 0 0;
     background-color: #27c34b;
     color: white;
@@ -27,6 +29,7 @@
 }
 
 .iconMail {
+    font-size: 70px !important;
     background-color: white;
     color: #dc4b3f;
 }
@@ -38,6 +41,7 @@
 }
 
 .iconFacebook {
+    font-size: 70px !important;
     background-color: #0e8bf1;
     color: white;
 }
@@ -49,6 +53,7 @@
 }
 
 .iconPhone {
+    font-size: 70px !important;
     border-radius: 0 0 20px 0;
     background-color:#1b407d;
     color: white;
@@ -60,18 +65,12 @@
     transition: width 1s;
 }
 
-
-.iconButton {
-    padding: 0px !important;
-    margin: 0 auto !important;
-}
-
 @media (max-width: 960px) {
     .contactIcon {
         width: 40px;
     }
     
-    .contactIcon__icon {
+    .iconWhatsapp, .iconMail, .iconFacebook, .iconPhone {
         font-size: 40px !important;
     }
 }
