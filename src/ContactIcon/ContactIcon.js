@@ -11,32 +11,6 @@ function ContactIcon() {
 
     return (
         <div className="contactIcon">
-<<<<<<< HEAD
-            <IconButton 
-                className="iconButton" 
-                aria-label="Go to Whatsapp" 
-                onClick={()=>window.open('https://wa.me/5491161029065')}
-            >
-                <WhatsAppIcon className="contactIcon__icon iconWhatsapp" />
-            </IconButton>
-            <IconButton 
-                className="iconButton" 
-                aria-label="Go to Mail" href="#contactForm"
-            >
-                <MailOutlineIcon className="contactIcon__icon iconMail" />
-            </IconButton>
-            <IconButton 
-                className="iconButton" 
-                aria-label="Go to Facebook" 
-                onClick={()=>window.open('https://www.facebook.com/profile.php?id=100011154066762')}>
-                    <FacebookIcon className="contactIcon__icon iconFacebook" />     
-            </IconButton>
-            <IconButton 
-                className="iconButton" 
-                aria-label="Go to Phone" 
-                href="#contactForm" >
-                    <PhoneIcon className="contactIcon__icon iconPhone" />     
-=======
             <IconButton className="iconButton" aria-label="Go to Whatsapp" onClick={()=>window.open('https://wa.me/5491161029065')}>
                 <WhatsAppIcon className="iconWhatsapp" />
             </IconButton>
@@ -48,7 +22,6 @@ function ContactIcon() {
             </IconButton>
             <IconButton className="iconButton" aria-label="Go to Phone" href="#contactForm" >
                 <PhoneIcon className="iconPhone" />     
->>>>>>> a23692ef873b6c877375cc369d7b0674c10f3421
             </IconButton>
         </div>
     )
