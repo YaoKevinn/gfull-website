@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/gfull-website/static/css/main.4b9423fc.chunk.css",
-    "main.js": "/gfull-website/static/js/main.a7b90609.chunk.js",
-    "main.js.map": "/gfull-website/static/js/main.a7b90609.chunk.js.map",
+    "main.css": "/gfull-website/static/css/main.8dd28328.chunk.css",
+    "main.js": "/gfull-website/static/js/main.1edae160.chunk.js",
+    "main.js.map": "/gfull-website/static/js/main.1edae160.chunk.js.map",
     "runtime-main.js": "/gfull-website/static/js/runtime-main.7f68f24a.js",
     "runtime-main.js.map": "/gfull-website/static/js/runtime-main.7f68f24a.js.map",
     "static/js/2.7f4d31b2.chunk.js": "/gfull-website/static/js/2.7f4d31b2.chunk.js",
     "static/js/2.7f4d31b2.chunk.js.map": "/gfull-website/static/js/2.7f4d31b2.chunk.js.map",
     "index.html": "/gfull-website/index.html",
-    "precache-manifest.dddbaa7af1fe0ce6022ed16ced0fd255.js": "/gfull-website/precache-manifest.dddbaa7af1fe0ce6022ed16ced0fd255.js",
+    "precache-manifest.b3138b666fa61d71d06c08c2ba87bffa.js": "/gfull-website/precache-manifest.b3138b666fa61d71d06c08c2ba87bffa.js",
     "service-worker.js": "/gfull-website/service-worker.js",
-    "static/css/main.4b9423fc.chunk.css.map": "/gfull-website/static/css/main.4b9423fc.chunk.css.map",
+    "static/css/main.8dd28328.chunk.css.map": "/gfull-website/static/css/main.8dd28328.chunk.css.map",
     "static/js/2.7f4d31b2.chunk.js.LICENSE.txt": "/gfull-website/static/js/2.7f4d31b2.chunk.js.LICENSE.txt",
     "static/media/aduki.jpg": "/gfull-website/static/media/aduki.784f8a2e.jpg",
     "static/media/almendraNonPareil.jpg": "/gfull-website/static/media/almendraNonPareil.d46b2a5e.jpg",
@@ -29,7 +29,7 @@
   "entrypoints": [
     "static/js/runtime-main.7f68f24a.js",
     "static/js/2.7f4d31b2.chunk.js",
-    "static/css/main.4b9423fc.chunk.css",
-    "static/js/main.a7b90609.chunk.js"
+    "static/css/main.8dd28328.chunk.css",
+    "static/js/main.1edae160.chunk.js"
   ]
 }
