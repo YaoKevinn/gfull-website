@@ -12,16 +12,16 @@ function ContactIcon() {
     return (
         <div className="contactIcon">
             <IconButton className="iconButton" aria-label="Go to Whatsapp" onClick={()=>window.open('https://wa.me/5491161029065')}>
-                <WhatsAppIcon className="contactIcon__icon iconWhatsapp" />
+                <WhatsAppIcon className="iconWhatsapp" />
             </IconButton>
             <IconButton className="iconButton" aria-label="Go to Mail" href="#contactForm">
-                <MailOutlineIcon className="contactIcon__icon iconMail" />
+                <MailOutlineIcon className="iconMail" />
             </IconButton>
             <IconButton className="iconButton" aria-label="Go to Facebook" onClick={()=>window.open('https://www.facebook.com/profile.php?id=100011154066762')}>
-                <FacebookIcon className="contactIcon__icon iconFacebook" />     
+                <FacebookIcon className="iconFacebook" />     
             </IconButton>
             <IconButton className="iconButton" aria-label="Go to Phone" href="#contactForm" >
-                <PhoneIcon className="contactIcon__icon iconPhone" />     
+                <PhoneIcon className="iconPhone" />     
             </IconButton>
         </div>
     )
