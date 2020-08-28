@@ -27,7 +27,7 @@ class App extends Component {
       db.collection("products").onSnapshot((querySnapshot) => {
         const docs = [...this.state.products];
         querySnapshot.forEach((doc) => {
-            docs.push({...doc.data(), id:doc.id});
+            docs.push({...doc.data()});
         });
         this.setState({products:docs});
       });

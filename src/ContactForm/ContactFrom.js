@@ -43,7 +43,7 @@ class ContactFrom extends Component {
              }, function(error) {
                 console.log('FAILED...', error);
              });
-        alert('郵件已寄出, 我們將盡快回復您');
+        alert('您的訊息已寄出, 我們將盡快以郵件方式回復您');
         this.setState({
             name:"",
             address:"",
@@ -59,8 +59,8 @@ class ContactFrom extends Component {
                     <p className="contactForm__formP">聯絡我們</p>
                     <br/>
                     <div className="contactForm__contactList" style={{textDecoration:'none'}}>
-                        <WhatsAppIcon onClick={()=>window.open('https://wa.me/5491161029065')} style={{color:'#27c34b',cursor:'pointer'}}/>
-                        <p> +54 9 11 3133 6688</p>
+                        <WhatsAppIcon onClick={()=>window.open('https://wa.me/5491125250888')} style={{color:'#27c34b',cursor:'pointer'}}/>
+                        <p> +54 9 11 2525 0888</p>
                     </div>
                     <div className="contactForm__contactList" style={{textDecoration:'none'}}>
                         <FacebookIcon onClick={()=>window.open('https://www.facebook.com/profile.php?id=100011154066762')} style={{color:'#0e8bf1', cursor:'pointer'}}/>
@@ -68,11 +68,11 @@ class ContactFrom extends Component {
                     </div>
                     <div className="contactForm__contactList">
                         <MailOutlineIcon color="error"/>
-                        <p> gfull.ar@gmail.com</p>
+                        <p>info@gfullsa.com</p>
                     </div>
                     <div className="contactForm__contactList">
                         <PhoneIcon color="primary"/>
-                        <p> +54 9 11 3133 6688</p>
+                        <p> +54 9 11 2525 0888</p>
                     </div>
                     <br/>
                     <TextField 
