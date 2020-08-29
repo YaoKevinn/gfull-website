@@ -1,20 +1,22 @@
 {
   "files": {
     "main.css": "/gfull-website/static/css/main.8dd28328.chunk.css",
-    "main.js": "/gfull-website/static/js/main.9612925d.chunk.js",
-    "main.js.map": "/gfull-website/static/js/main.9612925d.chunk.js.map",
+    "main.js": "/gfull-website/static/js/main.b77669f0.chunk.js",
+    "main.js.map": "/gfull-website/static/js/main.b77669f0.chunk.js.map",
     "runtime-main.js": "/gfull-website/static/js/runtime-main.7f68f24a.js",
     "runtime-main.js.map": "/gfull-website/static/js/runtime-main.7f68f24a.js.map",
-    "static/js/2.e3fe7630.chunk.js": "/gfull-website/static/js/2.e3fe7630.chunk.js",
-    "static/js/2.e3fe7630.chunk.js.map": "/gfull-website/static/js/2.e3fe7630.chunk.js.map",
+    "static/js/2.006e1209.chunk.js": "/gfull-website/static/js/2.006e1209.chunk.js",
+    "static/js/2.006e1209.chunk.js.map": "/gfull-website/static/js/2.006e1209.chunk.js.map",
     "index.html": "/gfull-website/index.html",
-    "precache-manifest.c6e74bce11a23e87610345f5b615d20f.js": "/gfull-website/precache-manifest.c6e74bce11a23e87610345f5b615d20f.js",
+    "precache-manifest.0952cf7d2ca0be150507fd87eff676dc.js": "/gfull-website/precache-manifest.0952cf7d2ca0be150507fd87eff676dc.js",
     "service-worker.js": "/gfull-website/service-worker.js",
     "static/css/main.8dd28328.chunk.css.map": "/gfull-website/static/css/main.8dd28328.chunk.css.map",
-    "static/js/2.e3fe7630.chunk.js.LICENSE.txt": "/gfull-website/static/js/2.e3fe7630.chunk.js.LICENSE.txt",
+    "static/js/2.006e1209.chunk.js.LICENSE.txt": "/gfull-website/static/js/2.006e1209.chunk.js.LICENSE.txt",
     "static/media/aduki.jpg": "/gfull-website/static/media/aduki.784f8a2e.jpg",
-    "static/media/almendraNonPareil.jpg": "/gfull-website/static/media/almendraNonPareil.d46b2a5e.jpg",
+    "static/media/almendraNonPareil.jpg": "/gfull-website/static/media/almendraNonPareil.adcb105b.jpg",
     "static/media/arandanosRojos.jpg": "/gfull-website/static/media/arandanosRojos.ea07a9b8.jpg",
+    "static/media/azucarMascabo.jpg": "/gfull-website/static/media/azucarMascabo.3d8668a0.jpg",
+    "static/media/azucarNegra.jpg": "/gfull-website/static/media/azucarNegra.09697ee8.jpg",
     "static/media/Home.css": "/gfull-website/static/media/bg.683be906.png",
     "static/media/castania.jpg": "/gfull-website/static/media/castania.b3d6472e.jpg",
     "static/media/ciruela.jpg": "/gfull-website/static/media/ciruela.60183f8d.jpg",
@@ -24,12 +26,13 @@
     "static/media/maniSinSal.jpg": "/gfull-website/static/media/maniSinSal.37cc22f2.jpg",
     "static/media/nuezMariposa.jpg": "/gfull-website/static/media/nuezMariposa.8d39f63f.jpg",
     "static/media/pistacho.jpg": "/gfull-website/static/media/pistacho.96e348fb.jpg",
-    "static/media/porotoMung.jpg": "/gfull-website/static/media/porotoMung.a2233dea.jpg"
+    "static/media/porotoMung.jpg": "/gfull-website/static/media/porotoMung.a2233dea.jpg",
+    "static/media/sesamoNegro.jpg": "/gfull-website/static/media/sesamoNegro.0450e27d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.7f68f24a.js",
-    "static/js/2.e3fe7630.chunk.js",
+    "static/js/2.006e1209.chunk.js",
     "static/css/main.8dd28328.chunk.css",
-    "static/js/main.9612925d.chunk.js"
+    "static/js/main.b77669f0.chunk.js"
   ]
 }

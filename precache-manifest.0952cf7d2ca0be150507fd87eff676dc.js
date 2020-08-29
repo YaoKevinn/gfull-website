@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b0f936b67f2a1cbaca62568d6475606",
+    "revision": "99bbc81a6fb32c8d6756cebe624d9fb2",
     "url": "/gfull-website/index.html"
   },
   {
-    "revision": "7a87613b2c111ef3f692",
+    "revision": "2dfcc6ae6cd6a0c3633a",
     "url": "/gfull-website/static/css/main.8dd28328.chunk.css"
   },
   {
-    "revision": "539c35b04369aef6b734",
-    "url": "/gfull-website/static/js/2.e3fe7630.chunk.js"
+    "revision": "5a2f7d57cd06960dc491",
+    "url": "/gfull-website/static/js/2.006e1209.chunk.js"
   },
   {
     "revision": "5f8be6edcb631ea3c834b8459dc2c264",
-    "url": "/gfull-website/static/js/2.e3fe7630.chunk.js.LICENSE.txt"
+    "url": "/gfull-website/static/js/2.006e1209.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7a87613b2c111ef3f692",
-    "url": "/gfull-website/static/js/main.9612925d.chunk.js"
+    "revision": "2dfcc6ae6cd6a0c3633a",
+    "url": "/gfull-website/static/js/main.b77669f0.chunk.js"
   },
   {
     "revision": "5eb7584c7ac98b239e11",
@@ -28,12 +28,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gfull-website/static/media/aduki.784f8a2e.jpg"
   },
   {
-    "revision": "d46b2a5e73f8265e6ceb7eaff30d3f1f",
-    "url": "/gfull-website/static/media/almendraNonPareil.d46b2a5e.jpg"
+    "revision": "adcb105b7fac0b0df26b29453eb67079",
+    "url": "/gfull-website/static/media/almendraNonPareil.adcb105b.jpg"
   },
   {
     "revision": "ea07a9b88155c17f0741d926b7b7ff59",
     "url": "/gfull-website/static/media/arandanosRojos.ea07a9b8.jpg"
+  },
+  {
+    "revision": "3d8668a01883355e28dadbcac7e2737e",
+    "url": "/gfull-website/static/media/azucarMascabo.3d8668a0.jpg"
+  },
+  {
+    "revision": "09697ee83306b2095bfb6abf09519270",
+    "url": "/gfull-website/static/media/azucarNegra.09697ee8.jpg"
   },
   {
     "revision": "683be9065976359f97f994a6f8e14f5b",
@@ -74,5 +82,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "a2233dea3d78505ef5ba75d81adb9fb6",
     "url": "/gfull-website/static/media/porotoMung.a2233dea.jpg"
+  },
+  {
+    "revision": "0450e27d7a4debe9092ae1adf6b0796b",
+    "url": "/gfull-website/static/media/sesamoNegro.0450e27d.jpg"
   }
 ]);
