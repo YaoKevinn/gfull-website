@@ -29,10 +29,14 @@ class App extends Component {
         querySnapshot.forEach((doc) => {
             docs.push({...doc.data()});
         });
+        docs.sort(function(a,b){
+            return a.id - b.id;
+        })
         this.setState({products:docs});
       });
   }
   
+
   calculateTotalPerItem = (quantity, product) => {
     var total = 0;
     const discKgs = product.discountKgs;
