@@ -68,7 +68,7 @@ class ContactFrom extends Component {
                     </div>
                     <div className="contactForm__contactList">
                         <MailOutlineIcon color="error"/>
-                        <p>info@gfullsa.com</p>
+                        <p>info@gfullsa.com.ar</p>
                     </div>
                     <div className="contactForm__contactList">
                         <PhoneIcon color="primary"/>
