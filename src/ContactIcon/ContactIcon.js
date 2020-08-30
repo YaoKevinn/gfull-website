@@ -11,7 +11,7 @@ function ContactIcon() {
 
     return (
         <div className="contactIcon">
-            <IconButton className="iconButton" aria-label="Go to Whatsapp" onClick={()=>window.open('https://wa.me/5491161029065')}>
+            <IconButton className="iconButton" aria-label="Go to Whatsapp" onClick={()=>window.open('https://wa.me/5491125250888')}>
                 <WhatsAppIcon className="iconWhatsapp" />
             </IconButton>
             <IconButton className="iconButton" aria-label="Go to Mail" href="#contactForm">

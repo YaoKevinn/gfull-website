@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { storage } from '../firebase'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -79,7 +80,15 @@ function Product(props) {
 
     //Output data config
     const product = props.pObj;
-    const productImg = require('../images/product/'+product.productImage);
+
+    const [imageState, setImgState] = useState({ imgUrl:'' });
+    const storageRef = storage.ref();
+    const imgRef = storageRef.child('images/products/'+product.productImage);
+    imgRef.getDownloadURL().then(url => {
+        setImgState({ imgUrl:url });
+    })
+
+
 
     return (
         <Grid item xs={12} sm={6} md={4} lg={2} align="center">
@@ -87,9 +96,9 @@ function Product(props) {
                 {/* <CardActionArea> */}
                     <CardMedia
                         component="img"
-                        alt="productImg"
+                        alt=""
                         height="200"
-                        image={productImg}
+                        image={imageState.imgUrl}
                         title="Contemplative Reptile"
                     />
                     <CardContent >
@@ -109,7 +118,7 @@ function Product(props) {
                             </Typography>) : null }
                         
                         <Modal show={showModalState.show} handleClose={hideModal}>
-                            <img className="product__modalImg" src={productImg} alt="prdImg"/>
+                            <img className="product__modalImg" src={imageState.imgUrl} alt="prdImg"/>
                             <div className="product__modalDescription">
                                 <p>{product.productName}</p>
                                 <p>{product.productDescription}</p>

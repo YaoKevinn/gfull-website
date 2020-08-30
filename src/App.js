@@ -12,7 +12,6 @@ import './App.css';
 
 class App extends Component {
 
-
   state = {
     products:[],
     shoppingCart:[],
@@ -24,10 +23,10 @@ class App extends Component {
   }
 
   getProductsFromFirebase = async () => {
-      db.collection("products").onSnapshot((querySnapshot) => {
+        db.collection("products").onSnapshot((querySnapshot) => {
         const docs = [...this.state.products];
         querySnapshot.forEach((doc) => {
-            docs.push({...doc.data()});
+                docs.push({...doc.data()});   
         });
         docs.sort(function(a,b){
             return a.id - b.id;
@@ -35,7 +34,6 @@ class App extends Component {
         this.setState({products:docs});
       });
   }
-  
 
   calculateTotalPerItem = (quantity, product) => {
     var total = 0;
@@ -47,7 +45,7 @@ class App extends Component {
         total = quantity * product.price1kg;
     }
     return total;
-}
+  }
 
   productAddedHandler = (id, cant, total) => {
 
@@ -97,6 +95,7 @@ class App extends Component {
 
 
   render(){  
+
       return (
         <Router>
             <div className="App">
