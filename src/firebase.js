@@ -2,6 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/firestore'
 import 'firebase/storage'
 
+require('firebase/auth')
+
 var firebaseConfig = {
     apiKey: "AIzaSyBvJ2mqakBvmqHkHWprgNFgTyqXj4agAxM",
     authDomain: "gfull-website.firebaseapp.com",
@@ -14,7 +16,9 @@ var firebaseConfig = {
   };
 
 const fb = firebase.initializeApp(firebaseConfig);
+const db = fb.firestore();
+const storage = firebase.storage();
+const auth = firebase.auth();
 
-export const db = fb.firestore();
-export const storage = firebase.storage();
+export { db, storage, auth }
 

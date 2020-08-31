@@ -7,7 +7,9 @@ import Product from './Product/Product'
 import ContactForm from './ContactForm/ContactFrom'
 import Footer from './Footer/Footer'
 import Grid from '@material-ui/core/Grid'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Login from './BackOffice/Login'
+import BackOffice from './BackOffice/BackOffice'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
@@ -48,7 +50,6 @@ class App extends Component {
   }
 
   productAddedHandler = (id, cant, total) => {
-
       const currentShoppingCart = [...this.state.shoppingCart];
       var products = [...this.state.products];
       var existItemInCart = false;
@@ -95,29 +96,34 @@ class App extends Component {
 
 
   render(){  
-
       return (
-        <Router>
-            <div className="App">
-                    <Switch>
-                        <Route path="/">
-                          <ContactIcon />
-                          <Header items={this.state.shoppingCart.length} productList={this.state.shoppingCart} productRemoveHandler={this.productRemoveHandler} totalPriceInCart={this.state.totalPriceInCart} shoppingCartClearHandler={this.shoppingCartClearHandler}/>
-                          <Home />
-                          <div className="app__productSection">
-                               <p className="app__productSectionTitle">超值優惠產品</p>
-                              <Grid container justify="center" spacing={3}>
-                                  {this.state.products.map(product => {
-                                    return <Product key={product.id} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}/>
-                                  })}
-                              </Grid>
-                          </div>
-                          <ContactForm />
-                          <Footer />
-                        </Route>
-                    </Switch>
-            </div>
-        </Router>
+            <Router>
+                <div className="App">
+                        <Switch>
+                            <Route path="/admin">
+                                <Login />
+                            </Route>
+                            <Route path="/backoffice">
+                                <BackOffice />
+                            </Route>
+                            <Route path="/">
+                            <ContactIcon />
+                            <Header items={this.state.shoppingCart.length} productList={this.state.shoppingCart} productRemoveHandler={this.productRemoveHandler} totalPriceInCart={this.state.totalPriceInCart} shoppingCartClearHandler={this.shoppingCartClearHandler}/>
+                            <Home />
+                            <div className="app__productSection">
+                                <p className="app__productSectionTitle">超值優惠產品</p>
+                                <Grid container justify="center" spacing={3}>
+                                    {this.state.products.map(product => {
+                                        return <Product key={product.id} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}/>
+                                    })}
+                                </Grid>
+                            </div>
+                            <ContactForm />
+                            <Footer />
+                            </Route>
+                        </Switch>
+                </div>
+            </Router>
       ); 
   }
 }

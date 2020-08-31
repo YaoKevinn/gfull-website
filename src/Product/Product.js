@@ -42,7 +42,8 @@ function Product(props) {
         setPurchaseState({ quantity: newQuantity, total: totalPrice, warningText: false});
     }
 
-    const removeQuantityHandler = () => {
+    const removeQuantityHandler = (event) => {
+        event.preventDefault();
         const currentQuantity = purchaseState.quantity;
         if (currentQuantity > 0){
             const newQuantity = currentQuantity - 1;
@@ -51,7 +52,8 @@ function Product(props) {
         }
     }
 
-    const addButtonHandler = () => {
+    const addButtonHandler = (event) => {
+        event.preventDefault();
         const currentQuantity = purchaseState.quantity;
         if (currentQuantity !== 0) {
             const currentTotal = purchaseState.total;
