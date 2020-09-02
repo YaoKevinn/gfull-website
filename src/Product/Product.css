@@ -1,6 +1,6 @@
 .product {
     max-width: 250px;
-    margin: 20px 0;
+    margin: 20px 0px;
 }
 
 .product:hover {
@@ -35,6 +35,7 @@
     font-size: 18px !important;
     font-weight: 300 !important;
     color: white !important;
+
 }
 
 .product__modalImg {

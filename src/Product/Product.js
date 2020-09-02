@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { storage } from '../firebase'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -82,26 +81,18 @@ function Product(props) {
 
     //Output data config
     const product = props.pObj;
-
-    const [imageState, setImgState] = useState({ imgUrl:'' });
-    const storageRef = storage.ref();
-    const imgRef = storageRef.child('images/products/'+product.productImage);
-    imgRef.getDownloadURL().then(url => {
-        setImgState({ imgUrl:url });
-    })
-
-
+    const productImg = require('../images/product/'+product.productImage);
 
     return (
-        <Grid item xs={12} sm={6} md={4} lg={2} align="center">
-            <Card className="product">
-                {/* <CardActionArea> */}
+            <Grid item xs={12} sm={6} md={4} lg={2} align="center">
+                <Card className="product">
                     <CardMedia
                         component="img"
                         alt=""
                         height="200"
-                        image={imageState.imgUrl}
-                        title="Contemplative Reptile"
+                        image={productImg}
+                        title="item"
+                        draggable={false}
                     />
                     <CardContent >
                         <Typography gutterBottom variant="h5" component="h2" align="left">
@@ -118,70 +109,68 @@ function Product(props) {
                                 <Chip className="product__chipStyle" label="特價" size="small" /> 
                                 <small>P$ </small> <span className="productPrice">{product.priceKgs}</span><small> / {product.discountKgs} kg</small>
                             </Typography>) : null }
-                        
-                        <Modal show={showModalState.show} handleClose={hideModal}>
-                            <img className="product__modalImg" src={imageState.imgUrl} alt="prdImg"/>
-                            <div className="product__modalDescription">
-                                <p>{product.productName}</p>
-                                <p>{product.productDescription}</p>
-                                <small>P$ </small><span>{product.price1kg}</span><small> / kg</small>
-                                <br/>
-                                <small>P$ </small><span>{product.priceKgs}</span><small> / {product.discountKgs} kg</small>
-                                <div className="product__modalCounter">
-                                     <Fab 
-                                        color="default" 
-                                        aria-label="remove" 
-                                        size="small" 
-                                        style={{margin:'auto 10px'}}
-                                        onClick={removeQuantityHandler} >
-                                        <RemoveIcon />
-                                    </Fab>
-                                    <span>{purchaseState.quantity}</span> Kg
-                                    <Fab 
-                                        color="default" 
-                                        aria-label="add" 
-                                        size="small" 
-                                        style={{margin:'auto 10px'}}
-                                        onClick={addQuantityHandler}>
-                                        <AddIcon />
-                                    </Fab>
-                                </div>
-                                <span>總計 ${purchaseState.total}</span>
-                                <br/>
-                                <br/>
-                                <Button 
-                                    className="product__addButton" 
-                                    variant="contained" 
-                                    startIcon={<AddShoppingCartIcon />}
-                                    onClick={addButtonHandler}>確認數量
-                                </Button>
-                                { purchaseState.warningText ? <span id="warningText" style={{color:'red', margin:'15px 0', display:'block'}}>請輸入購買數量...</span> : null}
-                            </div>
-                        </Modal>
+                    
                         <br/>
                         <Button className="product__addButton" variant="contained" startIcon={<AddShoppingCartIcon />} onClick={showModal}>
                             加至購物車
                         </Button>
-                            <Snackbar
-                                anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                                }}
-                                open={open}
-                                autoHideDuration={3000}
-                                onClose={snackBarClose}
-                                message={'** '+product.productName+' ** 加入購物車!'}
-                                action={
-                                <React.Fragment>
-                                    <IconButton size="small" aria-label="close" color="inherit" onClick={snackBarClose}>
-                                        <CloseIcon fontSize="small" />
-                                    </IconButton>
-                                </React.Fragment>
-                                }
-                            />
                     </CardContent>
-                {/* </CardActionArea> */}
             </Card>
+            <Modal show={showModalState.show} handleClose={hideModal}>
+                <img className="product__modalImg" src={productImg} alt="prdImg"/>
+                <div className="product__modalDescription">
+                    <p>{product.productName}</p>
+                    <p>{product.productDescription}</p>
+                    <small>P$ </small><span>{product.price1kg}</span><small> / kg</small>
+                    <br/>
+                    <small>P$ </small><span>{product.priceKgs}</span><small> / {product.discountKgs} kg</small>
+                    <div className="product__modalCounter">
+                         <Fab 
+                            color="default" 
+                            aria-label="remove" 
+                            size="small" 
+                            style={{margin:'auto 10px'}}
+                            onClick={removeQuantityHandler} >
+                                <RemoveIcon />
+                        </Fab>
+                        <span>{purchaseState.quantity}</span> Kg
+                        <Fab 
+                            color="default" 
+                            aria-label="add" 
+                            size="small" 
+                            style={{margin:'auto 10px'}}
+                            onClick={addQuantityHandler}>
+                                <AddIcon />
+                        </Fab>
+                    </div>
+                    <span>總計 ${purchaseState.total}</span>
+                    <br/>
+                    <br/>
+                    <Button 
+                        className="product__addButton" 
+                        variant="contained" 
+                        startIcon={<AddShoppingCartIcon />}
+                        onClick={addButtonHandler}>確認數量
+                    </Button>
+                    { purchaseState.warningText ? <span id="warningText" style={{color:'red', margin:'15px 0', display:'block'}}>請輸入購買數量...</span> : null}
+                </div>
+            </Modal>
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                }}
+                open={open}
+                autoHideDuration={3000}
+                onClose={snackBarClose}
+                message={'** '+product.productName+' ** 加入購物車!'}
+                action={
+                    <React.Fragment>
+                         <IconButton size="small" aria-label="close" color="inherit" onClick={snackBarClose}>
+                               <CloseIcon fontSize="small" />
+                         </IconButton>
+                    </React.Fragment>
+                }/>
         </Grid>
     )
 }
