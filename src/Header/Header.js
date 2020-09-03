@@ -64,6 +64,7 @@ class Header extends Component {
             email:"",
             subject:""
         });
+        console.log("email sent");
     }
     
     getAllProductsAsAString = () => {
@@ -140,7 +141,7 @@ class Header extends Component {
                 </ListItem>
           <Divider />
           <List alignitems="center">
-                <form id="drawer__orderListForm" onSubmit={this.handleSubmit.bind(this)} >
+                <form id="drawer__orderListForm" onSubmit={ this.props.productList.length !== 0 ? this.handleSubmit.bind(this) : ()=>alert("很抱歉, 購物車裡沒有商品, 輸入產品數量後請記得點選確認數量來加進購物車, 感謝!")} >
                     <input 
                         type="hidden" 
                         id="products" 

@@ -84,7 +84,7 @@ function Product(props) {
     const productImg = require('../images/product/'+product.productImage);
 
     return (
-            <Grid item xs={12} sm={6} md={4} lg={2} align="center">
+            <Grid item xs={12} sm={6} md={4} lg={3} align="center">
                 <Card className="product">
                     <CardMedia
                         component="img"

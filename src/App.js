@@ -7,8 +7,9 @@ import Product from './Product/Product'
 import ContactForm from './ContactForm/ContactFrom'
 import Footer from './Footer/Footer'
 import Grid from '@material-ui/core/Grid'
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import "react-multi-carousel/lib/styles.css";
 import './App.css';
 
 class App extends Component {
@@ -17,6 +18,8 @@ class App extends Component {
     products:[],
     shoppingCart:[],
     totalPriceInCart:0,
+    category:[],
+    currentCategory:"all",
   }
 
   componentDidMount() {
@@ -26,13 +29,38 @@ class App extends Component {
   getProductsFromFirebase = () => {
         db.collection("products").onSnapshot((querySnapshot) => {
           const docs = [...this.state.products];
+          const category = [...this.state.category];
           querySnapshot.forEach((doc) => {
-                  docs.push({...doc.data()});   
+                  docs.push({...doc.data()});
+                  const cat =  doc.data().category;
+                  const categoryEsp = category.map(function(a){return a.esp})
+                  if (!categoryEsp.includes(cat)){
+                        console.log(category)
+                        switch (cat) {
+                            case "frutasSecasPeladas":
+                                category.push({esp:cat, ch:"堅果類"});
+                            break;
+                            case "frutasDesecadas":
+                                category.push({esp:cat, ch:"乾果類"});
+                            break;
+                            case "porotos":
+                                category.push({esp:cat, ch:"干豆類"});
+                            break;
+                            case "azucares":
+                                category.push({esp:cat, ch:"糖類"});
+                            break;  
+                            case "otros":
+                                category.push({esp:cat, ch:"其他"});
+                            break;                
+                            default:
+                                break;
+                        }
+                  }
         });
         docs.sort(function(a,b){
             return a.id - b.id;
         })
-        this.setState({products:docs});
+        this.setState({products:docs, category:category});
       });
   }
 
@@ -93,6 +121,9 @@ class App extends Component {
      this.setState({shoppingCart:[]});
   }
 
+  categoryHandler = (category) => {
+      this.setState({currentCategory:category});
+  }
 
   render(){  
 
@@ -105,12 +136,26 @@ class App extends Component {
                                 <Header 
                                   items={this.state.shoppingCart.length} productList={this.state.shoppingCart} productRemoveHandler={this.productRemoveHandler} totalPriceInCart={this.state.totalPriceInCart} shoppingCartClearHandler={this.shoppingCartClearHandler}/>
                                 <Home />
+                                <p className="app__productSectionTitle">超值優惠產品</p>
                                 <div className="app__productSection">
-                                    <p className="app__productSectionTitle">超值優惠產品</p>
-                                    <Grid container justify="center" spacing={3}>
+                                    <div className="app__category">
+                                        <p>商品分類</p>
+                                        <Divider style={{margin:'10px 0'}} />
+                                        <Button className="app__categoryBtn" onClick={()=>this.categoryHandler("all")}>全部</Button>
+                                        {   this.state.category.map(category => {
+                                            const key = this.state.category.indexOf(category);
+                                            return <Button key={key} className="app__categoryBtn" onClick={()=>this.categoryHandler(category.esp)}>{category.ch}</Button>
+                                            })
+                                        }                                  
+                                    </div>
+                                    <Grid container justify="center" spacing={2}>
                                         {this.state.products.map(product => {
-                                            return <Product key={product.id} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem} 
-                                            showModal={()=>this.showModal(product.id)} />
+                                            const currentCategory = this.state.currentCategory;
+                                            if (product.category === currentCategory || currentCategory === "all" ){
+                                                return <Product key={product.id} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}
+                                            />
+                                            }
+                                            return null;
                                         })}
                                     </Grid>       
                                 </div>

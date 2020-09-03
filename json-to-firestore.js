@@ -102,33 +102,33 @@ var products = [
     //     "discountKgs":5,
     //     "priceKgs":750
     // },
-    {
-        "id": 11,
-        "productImage":"sesamoNegro.jpg",
-        "productName":"黑芝麻",
-        "productDescription":"Sésamo Negro",
-        "price1kg":700,
-        "discountKgs":2,
-        "priceKgs":1300
-    },
-    {
-        "id": 12,
-        "productImage":"azucarNegra.jpg",
-        "productName":"紅糖/黑糖",
-        "productDescription":"Azúcar Negra",
-        "price1kg":185,
-        "discountKgs":5,
-        "priceKgs":850
-    },
-    {
-        "id": 13,
-        "productImage":"azucarMascabo.jpg",
-        "productName":"黃糖/焦糖",
-        "productDescription":"Azúcar Mascabo",
-        "price1kg":210,
-        "discountKgs":5,
-        "priceKgs":950
-    }
+    // {
+    //     "id": 11,
+    //     "productImage":"sesamoNegro.jpg",
+    //     "productName":"黑芝麻",
+    //     "productDescription":"Sésamo Negro",
+    //     "price1kg":700,
+    //     "discountKgs":2,
+    //     "priceKgs":1300
+    // },
+    // {
+    //     "id": 12,
+    //     "productImage":"azucarNegra.jpg",
+    //     "productName":"紅糖/黑糖",
+    //     "productDescription":"Azúcar Negra",
+    //     "price1kg":185,
+    //     "discountKgs":5,
+    //     "priceKgs":850
+    // },
+    // {
+    //     "id": 13,
+    //     "productImage":"azucarMascabo.jpg",
+    //     "productName":"黃糖/焦糖",
+    //     "productDescription":"Azúcar Mascabo",
+    //     "price1kg":210,
+    //     "discountKgs":5,
+    //     "priceKgs":950
+    // }
  ]
 
  products.forEach(function(obj) {
