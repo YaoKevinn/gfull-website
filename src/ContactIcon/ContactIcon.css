@@ -1,11 +1,11 @@
 .contactIcon {
-    width: 70px;
+    width: 50px;
     position: sticky;
-    top: 25%;
+    top: 55%;
     right: 100%;
     display: flex;
     flex-direction: column;
-    margin-bottom: -330px;
+    margin-bottom: -250px;
     z-index: 1; /* nothing showing above of this header */
 }
 
@@ -16,61 +16,44 @@
 }
 
 .iconWhatsapp {
-    font-size: 70px !important;
+    font-size: 50px !important;
     border-radius: 0 20px 0 0;
     background-color: #27c34b;
     color: white;
 }
 
-.iconWhatsapp:hover{
-    width:130px;
-    cursor: pointer;
-    transition: width 1s;
-}
-
 .iconMail {
-    font-size: 70px !important;
+    font-size: 50px !important;
     background-color: white;
     color: #dc4b3f;
 }
 
-.iconMail:hover{
-    width:130px;
-    cursor: pointer;
-    transition: width 1s;
-}
-
 .iconFacebook {
-    font-size: 70px !important;
+    font-size: 50px !important;
     background-color: #0e8bf1;
     color: white;
 }
 
-.iconFacebook:hover{
-    width:130px;
-    cursor: pointer;
-    transition: width 1s;
-}
-
 .iconPhone {
-    font-size: 70px !important;
+    font-size: 50px !important;
     border-radius: 0 0 20px 0;
     background-color:#1b407d;
     color: white;
 }
 
-.iconPhone:hover{
-    width:130px;
+.iconPhone:hover, .iconWhatsapp:hover, .iconMail:hover, .iconFacebook:hover{
+    width:70px;
     cursor: pointer;
     transition: width 1s;
 }
 
 @media (max-width: 960px) {
     .contactIcon {
-        width: 40px;
+        width: 35px;
+        top: 60%;
     }
     
     .iconWhatsapp, .iconMail, .iconFacebook, .iconPhone {
-        font-size: 40px !important;
+        font-size: 37px !important;
     }
 }

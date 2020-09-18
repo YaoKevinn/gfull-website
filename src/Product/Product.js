@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import Grid from '@material-ui/core/Grid'
+// import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import FadeIn from 'react-fade-in';
+import LazyLoad from 'react-lazy-load';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -29,6 +31,15 @@ function Product(props) {
 
     const hideModal = () => {
         setShowModalState({ show: false });
+    };
+
+    const hideModalWithConfirm = () => {
+        if (purchaseState.quantity !== 0 && window.confirm("確定關閉嗎? ***商品尚未加入購物車, 請點選'確認數量'加入***")){
+            setShowModalState({ show: false });
+        }
+        if (purchaseState.quantity === 0) {
+            setShowModalState({ show: false });
+        }
     };
 
     // PurchaseState config
@@ -84,46 +95,65 @@ function Product(props) {
     const productImg = require('../images/product/'+product.productImage);
 
     return (
-            <Grid item xs={12} sm={6} md={4} lg={3} align="center">
+            <>
+            {/* <Grid item xs={6} sm={4} md={3} lg={2} align="center"> */}
                 <Card className="product">
-                    <CardMedia
-                        component="img"
-                        alt=""
-                        height="200"
-                        image={productImg}
-                        title="item"
-                        draggable={false}
-                    />
+                        {/* <CardMedia
+                            component="img"
+                            alt=""
+                            height="190"
+                            image={productImg}
+                            title="item"
+                            draggable={false} /> */}
+                        <LazyLoad height={180} offsetVertical={500} className="productImageLazy" throttle={250} >
+                            <FadeIn>
+                            <img src={productImg} alt="img" placeholder={<p>Loading</p>} className="productImage" height="190" draggable={false} />
+                            </FadeIn>
+                        </LazyLoad>
+                                
                     <CardContent >
-                        <Typography gutterBottom variant="h5" component="h2" align="left">
-                                {product.productName}
+                        <Typography gutterBottom variant="body1" component="h2" align="left" className="product__name">
+                                <strong>{product.productName}</strong>
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="span" className="product__descriptionSpan">
                                 {product.productDescription}
                         </Typography>
-                        <Typography variant="h6" color="textPrimary" component="span" className="product__priceSpan">
-                                <small>P$</small> <span className="productPrice">{product.price1kg}</span> <small> / kg</small>
+                        <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                <small>P$</small> 
+                                <span className="productPrice">{product.unitPrice}</span> 
+                                <small>/{product.unit}</small>
                         </Typography>
-                        { product.discountKgs !== 0 ? (
-                            <Typography variant="h6" color="textPrimary" component="span" className="product__priceSpan">
+                        { product.discountUnit ? (
+                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan red">
                                 <Chip className="product__chipStyle" label="特價" size="small" /> 
-                                <small>P$ </small> <span className="productPrice">{product.priceKgs}</span><small> / {product.discountKgs} kg</small>
+                                    <small>P$ </small> 
+                                    <span className="productPrice">{product.discountPrice}</span>
+                                    <small> /{product.discountUnit+product.unit}</small>
                             </Typography>) : null }
-                    
-                        <br/>
+                        { product.discountUnit2 ? (
+                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan red">
+                                <Chip className="product__chipStyle" label="特價" size="small" /> 
+                                    <small>P$ </small> 
+                                    <span className="productPrice">{product.discountPrice2}</span>
+                                    <small> /{product.discountUnit2+product.unit}</small>
+                            </Typography>) : null }
                         <Button className="product__addButton" variant="contained" startIcon={<AddShoppingCartIcon />} onClick={showModal}>
                             加至購物車
                         </Button>
                     </CardContent>
             </Card>
-            <Modal show={showModalState.show} handleClose={hideModal}>
+            <Modal show={showModalState.show} handleClose={hideModalWithConfirm} className="ReactModal__Overlay">
                 <img className="product__modalImg" src={productImg} alt="prdImg"/>
                 <div className="product__modalDescription">
                     <p>{product.productName}</p>
                     <p>{product.productDescription}</p>
-                    <small>P$ </small><span>{product.price1kg}</span><small> / kg</small>
-                    <br/>
-                    <small>P$ </small><span>{product.priceKgs}</span><small> / {product.discountKgs} kg</small>
+                    <small>P$ </small><span>{product.unitPrice}</span><small> / {product.unit}</small>
+                    { product.discountUnit ? 
+                        <><br/><small>P$ </small><span>{product.discountPrice}</span><small> / {product.discountUnit}{product.unit}</small></> : null
+                    }
+                    { product.discountUnit2 ? 
+                         <><br/><small>P$ </small><span>{product.discountPrice2}</span><small> / {product.discountUnit2}{product.unit}</small></> : null
+                    }
                     <div className="product__modalCounter">
                          <Fab 
                             color="default" 
@@ -133,7 +163,7 @@ function Product(props) {
                             onClick={removeQuantityHandler} >
                                 <RemoveIcon />
                         </Fab>
-                        <span>{purchaseState.quantity}</span> Kg
+                        <span>{purchaseState.quantity}{product.unit}</span>
                         <Fab 
                             color="default" 
                             aria-label="add" 
@@ -144,7 +174,19 @@ function Product(props) {
                         </Fab>
                     </div>
                     <span>總計 ${purchaseState.total}</span>
-                    <br/>
+                    <br/><br/>
+                    { product.id === 22 ? 
+                            <>
+                                {/* product election logic */}
+                                <span>請在購物車備註欄寫上您要的組合, 共60包/箱</span><br/>
+                                <span>組合可以包含:</span><br/>
+                                <span>菠菜細新竹米粉 200g</span><br/>
+                                <span>菠菜粗新竹米粉 200g</span><br/>
+                                <span>紅椒細新竹米粉 200g</span><br/>
+                                <span>紅椒粗新竹米粉 200g</span><br/>
+                                <span>紅蘿蔔細新竹米粉 200g</span><br/>
+                                <span>紅蘿蔔粗新竹米粉 200g</span><br/>
+                            </> : null}
                     <br/>
                     <Button 
                         className="product__addButton" 
@@ -171,7 +213,8 @@ function Product(props) {
                          </IconButton>
                     </React.Fragment>
                 }/>
-        </Grid>
+        {/* </Grid> */}
+        </>
     )
 }
 

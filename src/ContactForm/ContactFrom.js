@@ -56,7 +56,8 @@ class ContactFrom extends Component {
         return (
             <div className="contactForm" id="contactForm"> 
                 <form id="contactForm__form" className="contactForm__form" onSubmit={this.handleSubmit.bind(this)} >
-                    <p className="contactForm__formP">聯絡我們</p>
+                    <p className="contactForm__formP">聯絡我們/諮詢站</p>
+                    <p className="contactForm__warning">**如有選購, 請點選右上角購物車完成訂單送出**</p>
                     <br/>
                     <div className="contactForm__contactList" style={{textDecoration:'none'}}>
                         <WhatsAppIcon onClick={()=>window.open('https://wa.me/5491125250888')} style={{color:'#27c34b',cursor:'pointer'}}/>

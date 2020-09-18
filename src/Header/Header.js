@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import MenuIcon from '@material-ui/icons/Menu';
 import { Typography } from '@material-ui/core'
 
 import Drawer from '@material-ui/core/Drawer';
@@ -24,7 +25,8 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state = {
-            drawerOpen: false,
+            cartDrawerOpen: false,
+            categoryDrawerOpen: false,
             name:"",
             address:"",
             phone:"",
@@ -41,7 +43,8 @@ class Header extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        emailjs
+        if (window.confirm("確認送出訂單?")){
+            emailjs
             .sendForm(
                 "gmail",
                 "email_order_list_template",
@@ -65,6 +68,7 @@ class Header extends Component {
             subject:""
         });
         console.log("email sent");
+        }
     }
     
     getAllProductsAsAString = () => {
@@ -73,21 +77,26 @@ class Header extends Component {
         if (cartList.length !== 0){
             for (const item of cartList) {
                 //falta cambio
-                productString = productString + item.productName + ' x ' + item.cant + ' Kg  $' + item.total + '<br />';
+                productString = productString + item.productName + ' x ' + item.cant + item.unit + '  $' + item.total + '<br />';
             }
             productString = productString + '<br/><br/>總計: $' + String(this.getTotalPriceInCart());
         }
         return productString;
     }
 
-    toggleDrawer = (open) => (event) => {
+    toggleCartDrawer = (open) => (event) => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
           return;
         }
-        this.setState({drawerOpen: open });
+        this.setState({cartDrawerOpen: open });
     };
 
-    // shoppingCartProducts = this.props.productList.slice();
+    toggleCategoryDrawer = (open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        this.setState({categoryDrawerOpen: open });
+    };
 
     getTotalPriceInCart = ()=> {
         var totalPrice = 0;
@@ -102,10 +111,16 @@ class Header extends Component {
         return totalPrice;
     }
 
-    list = () => (
+    handleCategoryClick = (categoryName) => {
+        this.props.categoryHandler(categoryName);
+        this.setState({categoryDrawerOpen: false });
+        document.getElementById('scroll').scrollIntoView();
+    }
+
+    cartList = () => (
         <div
           role="presentation"
-          onClick={()=>this.toggleDrawer(false)}
+          onClick={()=>this.toggleCartDrawer(false)}
           className="overflow-scroll"
         >
           <List className="header__drawer">
@@ -116,15 +131,25 @@ class Header extends Component {
                 <ListItem alignItems="flex-start" key={item.id}>
                     <div className="cartList__itemSection">
                         <ListItemText
-                            primary={item.productName+' x '+item.cant+' Kg  $'+item.total}
-                            secondary={
+                            primary={
                                 <React.Fragment>
-                                    <Typography
+                                     <Typography
                                     component="span"
                                     variant="body2"
                                     color="textPrimary"
                                     >
-                                    {item.productDescription}
+                                    {item.productName+' - '+item.productDescription+' x '+item.cant+item.unit}
+                                    </Typography>
+                                </React.Fragment>
+                            }
+                            secondary={
+                                <React.Fragment>
+                                    <Typography
+                                    component="span"
+                                    variant="h6"
+                                    color="textPrimary"
+                                    >
+                                    <strong>${item.total}</strong>
                                     </Typography>
                                 </React.Fragment>}/>
                         <IconButton className="cartList__removeBtn" aria-label="delete" onClick={()=>this.props.productRemoveHandler(item.id)}>
@@ -132,7 +157,9 @@ class Header extends Component {
                         </IconButton>
                     </div>
                 </ListItem>
-            )): <ListItem alignItems="center"><span className="cartList__emptyText">**尚未添加任何產品至購物車**</span></ListItem> }
+            )): <ListItem alignItems="center">
+                    <span className="cartList__emptyText">**尚未添加任何產品至購物車**</span>
+                </ListItem> }
             </List>
           <Divider />
                 <ListItem className="cartList__totalPriceSection" alignItems="flex-start">
@@ -149,6 +176,7 @@ class Header extends Component {
                         value={this.getAllProductsAsAString()} 
                     />
                     <label className="drawer__orderListTitle">** 請輸入送貨細節及聯絡方式 **</label>
+                    <label className="drawer__warningText">如购买<span style={{fontWeight:'bold'}}>“代购”</span>系列商品，将以店家实际架上价格为主。若有价差我们会及时与您联系。</label>
                     <TextField 
                             type="text" 
                             id="name" 
@@ -187,7 +215,6 @@ class Header extends Component {
                             label="電子郵件" 
                             value={this.state.email}
                             onChange={this.handleChange.bind(this)}
-                            required
                         />
                         <br/>
                         <TextField
@@ -217,19 +244,46 @@ class Header extends Component {
           </List>
           <Divider />
           <List alignitems="center">
-              <ListItem className="cartList__continueBtn" button key={'繼續新增更多商品'} onClick={this.toggleDrawer(false)} >
+              <ListItem className="cartList__continueBtn" button key={'繼續新增更多商品'} onClick={this.toggleCartDrawer(false)} >
                     <ListItemText primary={'繼續新增更多商品'} align="center" />
               </ListItem>
           </List>
         </div>
     );
 
+    categoryList = () => (
+        <div
+            role="presentation"
+            onClick={()=>this.toggleCategoryDrawer(false)}
+            className="overflow-scroll">
+        <List className="header__drawer">
+            <ListItem>
+                <ListItemText primary="商品分類" style={{textAlign:'center'}} />
+            </ListItem>
+            <Divider />
+            { 
+                    this.props.category.map(category => {
+                    const key = this.props.category.indexOf(category);
+                    return  <ListItem 
+                                    button
+                                    key={key} 
+                                    onClick={()=>this.handleCategoryClick(category.esp)}
+                                    >
+                                <ListItemText primary={category.ch} />
+                            </ListItem>
+                 })
+            }
+        </List>
+        
+      </div>
+    )
+
     render(){
         return (
             <nav className="header">
-                <Grid container spacign={0} alignItems="center">
+                <Grid container spacign={0} align="center">
                     {/* logo on the left -> img */}
-                    <Grid item xs={12} sm={3} className="header__logoSection">
+                    <Grid item xs={12} sm={12} md={3} align="center" className="header__logoSection">
                         <Link to="/">
                             <img 
                                 className="header__logo" 
@@ -238,25 +292,35 @@ class Header extends Component {
                             />
                         </Link>
                     </Grid>
-                    <Grid item xs={6} sm={7}>
+                    <Grid item xs={4} sm={4} md={1} className="header__category">
+                        <Button onClick={this.toggleCategoryDrawer(true)}>
+                                     <MenuIcon className="header__shoppingCartIcon" fontSize="large"/>
+                                     <span style={{color:'green'}}>Menu</span>
+                        </Button>
+                    </Grid>
+                    <Grid item xs={4} sm={4} md={7} >
                         <div className="header__container">
                                 <Button className="header__navItem" href="#contactForm" >聯絡我們</Button>
                         </div>
                     </Grid>
-                    <Grid item xs={6} sm={1} align="center">
+                    <Grid item xs={4} sm={4}  md={1} align="center">
                         <Button className="header__shoppingCart">
                                  <Badge badgeContent={this.props.items} color="error">
-                                     <ShoppingCartIcon className="header__shoppingCartIcon" fontSize="large" onClick={this.toggleDrawer(true)}/>
+                                     <ShoppingCartIcon className="header__shoppingCartIcon" fontSize="large" onClick={this.toggleCartDrawer(true)}/>
                                 </Badge>
                         </Button>
                     </Grid>
                 </Grid>
                 <React.Fragment key={'right'}>
-                    <Drawer anchor={'right'} open={this.state.drawerOpen} onClose={this.toggleDrawer(false)}>
-                        {this.list()}
+                    <Drawer anchor={'right'} open={this.state.cartDrawerOpen} onClose={this.toggleCartDrawer(false)}>
+                        {this.cartList()}
                     </Drawer>
                 </React.Fragment>
-    
+                <React.Fragment key={'left'}>
+                    <Drawer anchor={'left'} open={this.state.categoryDrawerOpen} onClose={this.toggleCategoryDrawer(false)}>
+                        {this.categoryList()}
+                    </Drawer>
+                </React.Fragment>
             </nav>
         )
     }

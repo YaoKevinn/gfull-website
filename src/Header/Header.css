@@ -20,12 +20,18 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 20px;
+    margin-top: 5px !important;
 }
 
 .header__shoppingCart {
     display: flex;
     justify-content: center;
     border-left: 1px solid lightgray;
+    margin-top: 5px !important;
+}
+
+.header__category {
+    display: none !important;
 }
 
 .header__navItem {
@@ -107,6 +113,16 @@
 
 .drawer__orderListTitle {
     text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+
+.drawer__warningText {
+    width: 270px;
+    font-size: 14px;
+    color:red;
+    text-align: center;
 }
 
 .drawer__formInput {
@@ -114,10 +130,12 @@
     margin: 3px !important;
 }
 
+
 @media (max-width: 960px) {
     .header__container{
         justify-content: center;
         margin: 0;
+        margin-top: 5px;
     }
     .header__logo {
         margin: 0 auto;
@@ -125,6 +143,12 @@
     }
     .header__shoppingCart {
         display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        margin-top:0 !important;
+    }
+    .header__category {
+        display: flex !important;
         margin: 0 auto;
         justify-content: center;
     }
