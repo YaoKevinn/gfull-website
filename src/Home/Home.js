@@ -14,13 +14,13 @@ function Home() {
                             <div className="home__contentBoxText">
                                 <img className="home__freeShippongImg" src={freeShippingImg} alt="freeShipping" draggable="false"/>
                                 <div className="home__contentBoxP">
-                                    <p># 首都市中心包括Once滿$3000免運</p>
-                                    <p># 首都Belgrano區滿$4000免運</p>
-                                    <p># 首都城邊滿$5000免運</p>
-                                    <p># <strong>城外</strong>運費另計</p>
+                                    <p style={{textDecoration:'underline'}}>禾富食品批发公司</p>
+                                    <p># 首都内满$5000免运</p>
+                                    <p># 首都城边满$10000免运</p>
+                                    <p># <strong>城外</strong>运费另计</p>
                                 </div>
                             </div>
-                            <p className="home__contextBoxText2">** 週二、週五集中送貨 **</p>
+                            <p className="home__contextBoxText2">** 周二、周五集中送货 **</p>
                         </div>
                     </Grid>
                     <Grid item sm={12} md={4} className="home__imgSection">

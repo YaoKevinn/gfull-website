@@ -25,7 +25,8 @@
 }
 
 .productPrice {
-    margin-left:5px;
+    margin-left:2px;
+    margin-right:2px;
 }
 
 .product__priceSpan { 
@@ -101,7 +102,7 @@
     }
 
     .productPrice{
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .red {
@@ -109,8 +110,8 @@
     }
 
     .product__chipStyle {
-        font-size: 5px !important;
-        display: none !important;
+        font-size: 10px !important;
+        /* display: none !important; */
     }
 
     .product__addButton {

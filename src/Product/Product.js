@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 // import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import FadeIn from 'react-fade-in';
 import LazyLoad from 'react-lazy-load';
 import Typography from '@material-ui/core/Typography';
@@ -47,7 +46,13 @@ function Product(props) {
 
     const addQuantityHandler = (event) => {
         event.preventDefault();
-        const newQuantity = purchaseState.quantity + 1;
+        var newQuantity = 0;
+        if (product.unitPrice) {
+            newQuantity = purchaseState.quantity + 1;
+        }else {
+            newQuantity = purchaseState.quantity + product.discountUnit;
+        }
+
         const totalPrice = props.calculateTotalPerItem(newQuantity, product);
         setPurchaseState({ quantity: newQuantity, total: totalPrice, warningText: false});
     }
@@ -55,9 +60,15 @@ function Product(props) {
     const removeQuantityHandler = (event) => {
         event.preventDefault();
         const currentQuantity = purchaseState.quantity;
+        var newQuantity = 0;
+        var totalPrice = 0;
         if (currentQuantity > 0){
-            const newQuantity = currentQuantity - 1;
-            const totalPrice = props.calculateTotalPerItem(newQuantity, product);
+            if (product.unitPrice) {
+                newQuantity = currentQuantity - 1;
+            }else{
+                newQuantity = currentQuantity - product.discountUnit;
+            }
+            totalPrice = props.calculateTotalPerItem(newQuantity, product);
             setPurchaseState({ quantity: newQuantity,total: totalPrice, warningText: false});
         }
     }
@@ -118,24 +129,52 @@ function Product(props) {
                         <Typography variant="body2" color="textSecondary" component="span" className="product__descriptionSpan">
                                 {product.productDescription}
                         </Typography>
-                        <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
-                                <small>P$</small> 
-                                <span className="productPrice">{product.unitPrice}</span> 
-                                <small>/{product.unit}</small>
-                        </Typography>
+                        {
+                            product.category === "promo" ?
+                            <>
+                                <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                    <s>
+                                        <small>$</small> 
+                                        <span className="productPrice">{product.originalPrice}</span> 
+                                        <small>/{product.unit}</small>
+                                    </s>
+                                </Typography>
+                                <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                    <Chip className="product__chipStyle" label="特价" size="small" />
+                                    <small>$</small> 
+                                    <span className="productPrice">{product.unitPrice}</span> 
+                                    <small>/{product.unit}</small>
+                                </Typography>
+                             </>
+                            :
+                                product.unitPrice ? 
+                                <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                    <small>$</small> 
+                                    <span className="productPrice">{product.unitPrice}</span> 
+                                    <small>/{product.unit}</small>
+                                </Typography> 
+                                :null
+                        }
                         { product.discountUnit ? (
-                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan red">
-                                <Chip className="product__chipStyle" label="特價" size="small" /> 
-                                    <small>P$ </small> 
-                                    <span className="productPrice">{product.discountPrice}</span>
-                                    <small> /{product.discountUnit+product.unit}</small>
+                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
+                                    <span className="productPrice red"><strong>{product.discountUnit+product.unit}</strong></span>
+                                    <span className="productPrice"><small> &nbsp; $</small> {product.discountPrice}</span>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice/product.discountUnit)}/{product.unit})</small></span>
                             </Typography>) : null }
                         { product.discountUnit2 ? (
-                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan red">
-                                <Chip className="product__chipStyle" label="特價" size="small" /> 
-                                    <small>P$ </small> 
-                                    <span className="productPrice">{product.discountPrice2}</span>
-                                    <small> /{product.discountUnit2+product.unit}</small>
+                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
+                                    <span className="productPrice red"><strong>{product.discountUnit2+product.unit}</strong></span>
+                                    <span className="productPrice"><small>&nbsp;$</small> {product.discountPrice2}</span>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice2/product.discountUnit2)}/{product.unit})</small></span>
+                            </Typography>) : null }
+                            { product.discountUnit3 ? (
+                            <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
+                                {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
+                                    <span className="productPrice red"><strong>{product.discountUnit3+product.unit}</strong></span>
+                                    <span className="productPrice"><small>&nbsp;$</small> {product.discountPrice3}</span>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice3/product.discountUnit3)}/{product.unit})</small></span>
                             </Typography>) : null }
                         <Button className="product__addButton" variant="contained" startIcon={<AddShoppingCartIcon />} onClick={showModal}>
                             加至購物車
@@ -147,12 +186,18 @@ function Product(props) {
                 <div className="product__modalDescription">
                     <p>{product.productName}</p>
                     <p>{product.productDescription}</p>
-                    <small>P$ </small><span>{product.unitPrice}</span><small> / {product.unit}</small>
+                    {
+                        product.unitPrice ? 
+                            <><small>P$ </small><span>{product.unitPrice}</span><small> / {product.unit}</small></> : null
+                    }
                     { product.discountUnit ? 
                         <><br/><small>P$ </small><span>{product.discountPrice}</span><small> / {product.discountUnit}{product.unit}</small></> : null
                     }
                     { product.discountUnit2 ? 
                          <><br/><small>P$ </small><span>{product.discountPrice2}</span><small> / {product.discountUnit2}{product.unit}</small></> : null
+                    }
+                    { product.discountUnit3 ? 
+                         <><br/><small>P$ </small><span>{product.discountPrice3}</span><small> / {product.discountUnit3}{product.unit}</small></> : null
                     }
                     <div className="product__modalCounter">
                          <Fab 
@@ -173,9 +218,9 @@ function Product(props) {
                                 <AddIcon />
                         </Fab>
                     </div>
-                    <span>總計 ${purchaseState.total}</span>
+                    <span>總計 ${Math.round(purchaseState.total)}</span>
                     <br/><br/>
-                    { product.id === 22 ? 
+                    { product.id === 122 ? 
                             <>
                                 {/* product election logic */}
                                 <span>請在購物車備註欄寫上您要的組合, 共60包/箱</span><br/>

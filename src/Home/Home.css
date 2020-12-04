@@ -39,7 +39,7 @@
     box-shadow: 5px 5px 20px black;
     width:70%;
     font-size: 30px;
-    font-weight: 400;
+    font-weight: bold;
     text-align: left;
     margin: 50px auto;
     padding: 30px;
@@ -61,19 +61,35 @@
 
 .home__contentBoxImage {
     display: flex;
-    margin-top:20px;
+    /* margin-top: 20px; */
+    margin: auto auto;
     width: 85%;
-    min-width: 300px;
+    min-width: 300px; 
 }
 
+.home__imgSection {
+    display: flex;
+    align-self: flex-end;
+}
+
+.app__searchBar{
+    margin-left: 10px;
+  } 
+
 @media (max-width: 960px) {
+    .home__freeShippongImg {
+        width:150px;
+    }
+
     .home__contentBoxText{
         margin-top: 90px;
+        padding: 10px;
+        width: 90%;
     }
     .home__contentBox{
         font-size: 23px;
         margin: 20px auto;
-        margin-top: 50px;
+        margin-top: 0px;
     }
     .home__contentBoxP{
         width:100%;
@@ -82,17 +98,18 @@
         flex: 1;
     }
     .home__contentBoxP > p{
-        font-size: 22px !important;
+        font-size: 15px !important;
         margin: 5px 0 !important;
     }
     .home__contextBoxText2 {
-        font-size: 22px !important;
+        font-size: 16px !important;
         margin-top: 0px;
     }
     .home__contentBoxImage {
         margin: 0 auto;
         margin-top: 20px;
-        width: 10px;
+        width: 250px;
+        min-width: 0px;
     }
     .home__contentBoxText {
         flex-direction: column;

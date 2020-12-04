@@ -10,7 +10,7 @@
 
 .app__productSection {
   max-width: 1500px;
-  margin: 50px auto;
+  margin: 20px auto;
   overflow: hidden;
   height: auto;
   display: flex;
@@ -64,6 +64,13 @@
   font-weight: bold;
 }
 
+.app__titleSection{
+  display: flex;
+  max-width: 1500px;
+  align-items: center;
+  margin: 0 auto;
+
+}
 
 .app__productSectionTitle {
   font-family: 'Noto Sans TC', sans-serif;
@@ -73,12 +80,30 @@
   color: gray;
   max-width: 1500px;
   margin: 50px auto;
+  justify-items: flex-start;
+  flex:1;
+}
+
+.app__searchBar{
+  padding: 10px;
+  width:300px;
+  border: 2px solid gray;
+}
+
+.app__productSearchTitle {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  color: gray;
+  margin: 10px auto;
 }
 
 @media (max-width: 960px) {
 
   .app__productSectionTitle{
     text-align: center;
+    margin: 20px; 
   }
   .app__productSection {
     flex-direction: column;
@@ -93,6 +118,17 @@
   }
   .app__mobileCategory {
     display: flex !important;
+  }
+
+  .app__titleSection {
+    display: block;
+    width: 80%;
+  }
+
+  .app__searchBar {
+    width: 80%;
+    padding: 5px !important;
+    height: 20px;
   }
 
 }

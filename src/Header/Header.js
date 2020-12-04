@@ -16,9 +16,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import * as emailjs from 'emailjs-com';
-
+import MultiSelectTreeView from '../MultiSelectTreeView/MultiSelectTreeView';
 
 class Header extends Component {
 
@@ -27,6 +28,7 @@ class Header extends Component {
         this.state = {
             cartDrawerOpen: false,
             categoryDrawerOpen: false,
+            searchBarText: "",
             name:"",
             address:"",
             phone:"",
@@ -43,7 +45,7 @@ class Header extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (window.confirm("確認送出訂單?")){
+        if (window.confirm("確認送出訂單? ")){
             emailjs
             .sendForm(
                 "gmail",
@@ -116,6 +118,13 @@ class Header extends Component {
         this.setState({categoryDrawerOpen: false });
         document.getElementById('scroll').scrollIntoView();
     }
+    
+    searchIconClicked = () => {
+        const text = document.getElementById('headerSearchInput').value;
+        this.setState({searchBarText: text});
+        this.props.searchIconClickedHandler(null, text);
+        this.setState({categoryDrawerOpen: false });
+    }
 
     cartList = () => (
         <div
@@ -149,7 +158,7 @@ class Header extends Component {
                                     variant="h6"
                                     color="textPrimary"
                                     >
-                                    <strong>${item.total}</strong>
+                                    <strong>${Math.round(item.total)}</strong>
                                     </Typography>
                                 </React.Fragment>}/>
                         <IconButton className="cartList__removeBtn" aria-label="delete" onClick={()=>this.props.productRemoveHandler(item.id)}>
@@ -164,7 +173,7 @@ class Header extends Component {
           <Divider />
                 <ListItem className="cartList__totalPriceSection" alignItems="flex-start">
                         <span>總計:</span>
-                        <span className="cartList__totalPrice">ARS ${this.getTotalPriceInCart()}</span>
+                        <span className="cartList__totalPrice">ARS ${Math.round(this.getTotalPriceInCart())}</span>
                 </ListItem>
           <Divider />
           <List alignitems="center">
@@ -232,8 +241,11 @@ class Header extends Component {
                             />
                         <p style={{color:'gray'}}> (*)必填項目</p>
                         <br/>
+                        <label className="drawer__warningText" style={{color:'gray', fontWeight:'bold'}}>订单确认送出后，将会有专员与您联系安排送货时间，货到付款。感谢您的订购！</label>
+                        <br/>
                         <Button
-                            type="submit"
+                            // type="submit"
+                            onClick={ () => alert('订单已寄出！ Pedido Enviado!') }
                             variant="contained"
                             color="primary"
                             className="drawer__OrderListConfirmBtn"
@@ -261,18 +273,7 @@ class Header extends Component {
                 <ListItemText primary="商品分類" style={{textAlign:'center'}} />
             </ListItem>
             <Divider />
-            { 
-                    this.props.category.map(category => {
-                    const key = this.props.category.indexOf(category);
-                    return  <ListItem 
-                                    button
-                                    key={key} 
-                                    onClick={()=>this.handleCategoryClick(category.esp)}
-                                    >
-                                <ListItemText primary={category.ch} />
-                            </ListItem>
-                 })
-            }
+            <MultiSelectTreeView category={this.props.category} categoryHandler={this.handleCategoryClick} />
         </List>
         
       </div>
@@ -299,8 +300,8 @@ class Header extends Component {
                         </Button>
                     </Grid>
                     <Grid item xs={4} sm={4} md={7} >
-                        <div className="header__container">
-                                <Button className="header__navItem" href="#contactForm" >聯絡我們</Button>
+                        <div className="header__container" >
+                                <Button className="header__navItem" href="#contactForm" >联络我们</Button>
                         </div>
                     </Grid>
                     <Grid item xs={4} sm={4}  md={1} align="center">
@@ -318,6 +319,13 @@ class Header extends Component {
                 </React.Fragment>
                 <React.Fragment key={'left'}>
                     <Drawer anchor={'left'} open={this.state.categoryDrawerOpen} onClose={this.toggleCategoryDrawer(false)}>
+                        <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+                             <input id="headerSearchInput" className="app__searchBar" type="text" placeholder="查询您要的产品" />
+                             <IconButton style={{color:'green'}} component="span" onClick={this.searchIconClicked}>
+                                <SearchIcon fontSize="large" />
+                             </IconButton>
+                         </div>
+                        <Divider />
                         {this.categoryList()}
                     </Drawer>
                 </React.Fragment>

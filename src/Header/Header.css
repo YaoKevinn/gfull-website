@@ -21,6 +21,7 @@
     justify-content: flex-end;
     margin-right: 20px;
     margin-top: 5px !important;
+    text-decoration: none;
 }
 
 .header__shoppingCart {
@@ -39,7 +40,7 @@
     padding: 0 20px;
     font-family: 'Noto Sans TC', sans-serif !important;
     font-size: 20px !important;
-    font-weight: 300;
+    font-weight: bold !important;
     color: #007935 !important;
     
 }
