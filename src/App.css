@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: 'Noto Sans TC', sans-serif !important;
 }
 
 .wechat {
@@ -11,14 +12,19 @@
 .app__productSection {
   max-width: 1500px;
   margin: 20px auto;
-  overflow: hidden;
   height: auto;
   display: flex;
+  align-items: flex-start;
 }
 
 .app__products {
-    width: 100%;
-    text-align: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin-left: 50px
 }
 
 .app__infiniteScroll{
@@ -27,7 +33,7 @@
 
 .app__category {
   font-family: 'Noto Sans TC', sans-serif;
-  width: 20%;
+  width: 320px;
   font-size: 30px;
   display: flex;
   flex-direction: column;
@@ -35,10 +41,18 @@
 
 .app__webCategory {
   font-family: 'Noto Sans TC', sans-serif;
-  width: 200px;
+  width: 100%;
   font-size: 30px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 15px 15px 20px #D1D9E6;
+  padding: 35px 20px;
+}
+
+.app__categoryTitle {
+    color: #4DBBA3   
 }
 
 .app__webCategory > p {
@@ -85,9 +99,10 @@
 }
 
 .app__searchBar{
-  padding: 10px;
+  padding: 10px 15px;
   width:300px;
-  border: 2px solid gray;
+  border: 2px solid #ccc;
+  border-radius: 20px;
 }
 
 .app__productSearchTitle {
@@ -104,6 +119,7 @@
   .app__productSectionTitle{
     text-align: center;
     margin: 20px; 
+    display: none;
   }
   .app__productSection {
     flex-direction: column;
@@ -123,6 +139,7 @@
   .app__titleSection {
     display: block;
     width: 80%;
+    margin-top: 50px;
   }
 
   .app__searchBar {
@@ -131,6 +148,32 @@
     height: 20px;
   }
 
+  .app__products {
+      margin: 0;
+  }
+
 }
 
 
+.MuiTreeItem-label {
+    font-size: 18px !important;
+    padding: 10px 5px !important; 
+    margin-left: 5px !important;
+    background-color: transparent;
+}
+
+.MuiTreeItem-content:hover {
+    background-color: #4DBBA3 !important;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.Mui-selected {
+    background-color: #4DBBA3 ;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.MuiTypography-body1 {
+    background-color: transparent !important;
+}

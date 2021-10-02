@@ -133,7 +133,7 @@ class App extends Component {
                                 category.push({esp:cat, ch:"素肉类 Cubo De Carne", prioridad:10});
                             break;
                             case "aderezo":
-                                category.push({esp:cat, ch:"沾酱类 Salsas/Aderezos", prioridad:11});
+                                category.push({esp:cat, ch:"调味/沾酱类 Condimento/Salsas/Aderezos", prioridad:11});
                             break;
                             case "especias":
                                 category.push({esp:cat, ch:"干香料类 Especias", prioridad:11.5});
@@ -150,8 +150,8 @@ class App extends Component {
                             case "pasta":
                                 category.push({esp:cat, ch:"面条类 Pastas", prioridad:15});
                             break;
-                            case "congelado-ravioles":
-                                category.push({esp:cat, ch:"冷冻水饺 Ravioles Congelados", prioridad:16});
+                            case "Congelados":
+                                category.push({esp:cat, ch:"冷冻类 Congelados", prioridad:16});
                             break;
                             case "postre":
                                 category.push({esp:cat, ch:"甜点类 Postres", prioridad:17});
@@ -309,7 +309,7 @@ class App extends Component {
   }
 
   searchIconClickedHandler = (event, text) => {
-      var searchText = "";
+      let searchText = "";
       if (text) {
         searchText = text;
         document.getElementById('searchInput').value = text;
@@ -325,9 +325,11 @@ class App extends Component {
   }
 
   ignoreAccentsAndCase = (str) => {
-    str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-    str = str.toLowerCase();
-    return str;
+    if (str) {
+        str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        str = str.toLowerCase();
+        return str;
+    }
   } 
 
   render(){ 
@@ -353,7 +355,7 @@ class App extends Component {
                                     <p className="app__productSectionTitle" id="scroll">禾富食品批发公司 Mayorista Distribuidora</p>
                                     <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
                                         <input id="searchInput" className="app__searchBar" type="text" placeholder="查询您要的产品" />
-                                        <IconButton style={{color:'green'}} component="span" onClick={this.searchIconClickedHandler}>
+                                        <IconButton style={{color:'#4DBBA3'}} component="span" onClick={ this.searchIconClickedHandler }>
                                             <SearchIcon fontSize="large" />
                                         </IconButton>
                                     </div>
@@ -361,9 +363,9 @@ class App extends Component {
                                 <div className="app__productSection">
                                     <div className="app__category">
                                         <div className="app__webCategory">
-                                        <p>商品分类</p>
-                                        <Divider />
-                                        <MultiSelectTreeView category={this.state.category} categoryHandler={this.categoryHandler} />
+                                            <p className="app__categoryTitle">商品分类</p>
+                                            <Divider />
+                                            <MultiSelectTreeView category={this.state.category} categoryHandler={this.categoryHandler} />
                                         </div>
                                         <FormControl className="app__mobileCategory">
                                                     <span style={{color:'green', fontWeight:'700', fontSize:'15px'}}>產品類別</span>
@@ -390,13 +392,15 @@ class App extends Component {
                                                     ?
                                                         <>
                                                         <p className="app__productSearchTitle">"{this.state.searchText}" 搜寻结果：</p>
-                                                        {this.state.products.map((product, index) => {
-                                                            if ((product.productName.includes(this.state.searchText) || this.ignoreAccentsAndCase(product.productDescription).includes(this.state.searchText)) && product.disponible === true ){
-                                                                 return <Product key={index} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}/>
-                                                            }else{
-                                                                return null;
-                                                            }
-                                                        })}
+                                                        {
+                                                            this.state.products.map((product, index) => {
+                                                                if ((product.productName.includes(this.state.searchText) || this.ignoreAccentsAndCase(product.productDescription).includes(this.state.searchText)) && product.disponible === true ){
+                                                                    return <Product key={index} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}/>
+                                                                }else{
+                                                                    return null;
+                                                                }
+                                                            })
+                                                        }
                                                         </>
                                                        
                                                     :

@@ -108,7 +108,7 @@ function Product(props) {
     return (
             <>
             {/* <Grid item xs={6} sm={4} md={3} lg={2} align="center"> */}
-                <Card className="product">
+                <div className="product"  onClick={showModal}>
                         {/* <CardMedia
                             component="img"
                             alt=""
@@ -122,104 +122,107 @@ function Product(props) {
                             </FadeIn>
                         </LazyLoad>
                                 
-                    <CardContent >
+                    <div className="product-description-section" >
                         <Typography gutterBottom variant="body1" component="h2" align="left" className="product__name">
-                                <strong>{product.productName}</strong>
+                            {product.productName}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="span" className="product__descriptionSpan">
                                 {product.productDescription}
                         </Typography>
+                        <div className="bottom">
                         {
                             product.category === "promo" ?
                             <>
                                 <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
-                                    <s>
-                                        <small>$</small> 
-                                        <span className="productPrice">{product.originalPrice}</span> 
-                                        <small>/{product.unit}</small>
-                                    </s>
+                                        <p className="small-text line-through">$</p> 
+                                        <span className="productPrice line-through">{product.originalPrice} </span> 
+                                        <p className="small-text line-through"> / {product.unit}</p>
                                 </Typography>
                                 <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
-                                    <Chip className="product__chipStyle" label="特价" size="small" />
-                                    <small>$</small> 
-                                    <span className="productPrice">{product.unitPrice}</span> 
-                                    <small>/{product.unit}</small>
+                                    <p className="small-text">$</p> 
+                                    <span className="productPrice bold">{product.unitPrice}</span> 
+                                    <p className="small-text"> / {product.unit}</p>
                                 </Typography>
+                                <div className="product__chipStyle" size="small" >
+                                    <img src={require('../images/discount.svg')} alt="discount" />
+                                </div>
                              </>
                             :
                                 product.unitPrice ? 
                                 <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
-                                    <small>$</small> 
-                                    <span className="productPrice">{product.unitPrice}</span> 
-                                    <small>/{product.unit}</small>
+                                    <p className="small-text">$</p> 
+                                    <span className="productPrice bold">{product.unitPrice}</span> 
+                                    <small> / {product.unit}</small>
                                 </Typography> 
                                 :null
                         }
-                        { product.discountUnit ? (
+                        { product.discountUnit && product.discountPrice ? (
                             <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
                                 {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
                                     <span className="productPrice red"><strong>{product.discountUnit+product.unit}</strong></span>
-                                    <span className="productPrice"><small> &nbsp; $</small> {product.discountPrice}</span>
-                                    <span className="productPrice"><small>({Math.round(product.discountPrice/product.discountUnit)}/{product.unit})</small></span>
+                                    <p className="productPrice bold">&nbsp; <span className="small-text">$</span> {product.discountPrice}</p>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice/product.discountUnit)} / {product.unit})</small></span>
                             </Typography>) : null }
-                        { product.discountUnit2 ? (
+                        { product.discountUnit2 && product.discountPrice2 ? (
                             <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
                                 {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
                                     <span className="productPrice red"><strong>{product.discountUnit2+product.unit}</strong></span>
-                                    <span className="productPrice"><small>&nbsp;$</small> {product.discountPrice2}</span>
-                                    <span className="productPrice"><small>({Math.round(product.discountPrice2/product.discountUnit2)}/{product.unit})</small></span>
+                                    <p className="productPrice bold"><span className="small-text">&nbsp;$</span> {product.discountPrice2}</p>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice2/product.discountUnit2)} / {product.unit})</small></span>
                             </Typography>) : null }
-                            { product.discountUnit3 ? (
+                            { product.discountUnit3 && product.discountPrice3 ? (
                             <Typography variant="subtitle1" color="textPrimary" component="span" className="product__priceSpan">
                                 {/* <Chip className="product__chipStyle" label="批发价" size="small" />  */}
                                     <span className="productPrice red"><strong>{product.discountUnit3+product.unit}</strong></span>
-                                    <span className="productPrice"><small>&nbsp;$</small> {product.discountPrice3}</span>
-                                    <span className="productPrice"><small>({Math.round(product.discountPrice3/product.discountUnit3)}/{product.unit})</small></span>
+                                    <p className="productPrice bold"><span className="small-text">&nbsp;$</span> {product.discountPrice3}</p>
+                                    <span className="productPrice"><small>({Math.round(product.discountPrice3/product.discountUnit3)} / {product.unit})</small></span>
                             </Typography>) : null }
-                        <Button className="product__addButton" variant="contained" startIcon={<AddShoppingCartIcon />} onClick={showModal}>
-                            加至購物車
-                        </Button>
-                    </CardContent>
-            </Card>
-            <Modal show={showModalState.show} handleClose={hideModalWithConfirm} className="ReactModal__Overlay">
+                            {/* <div className="product__addButton">
+                                <AddShoppingCartIcon />
+                            </div> */}
+                        </div>
+                    </div>
+            </div>
+            <Modal style={{borderRadius: 20}} show={showModalState.show} handleClose={hideModalWithConfirm} className="ReactModal__Overlay">
                 <img className="product__modalImg" src={productImg} alt="prdImg"/>
                 <div className="product__modalDescription">
-                    <p>{product.productName}</p>
-                    <p>{product.productDescription}</p>
+                    <p className="product__modalName">{product.productName}</p>
+                    <p className="product__modalDesc">{product.productDescription}</p>
+                    <div className="priceSection">
                     {
                         product.unitPrice ? 
-                            <><small>P$ </small><span>{product.unitPrice}</span><small> / {product.unit}</small></> : null
+                            <div className="row"><small>$ </small><p>{product.unitPrice}</p><small> / {product.unit}</small></div> : null
                     }
                     { product.discountUnit ? 
-                        <><br/><small>P$ </small><span>{product.discountPrice}</span><small> / {product.discountUnit}{product.unit}</small></> : null
+                        <div className="row"><small>$ </small><p>{product.discountPrice}</p><small> / {product.discountUnit}{product.unit}</small></div> : null
                     }
                     { product.discountUnit2 ? 
-                         <><br/><small>P$ </small><span>{product.discountPrice2}</span><small> / {product.discountUnit2}{product.unit}</small></> : null
+                         <div className="row"><small>$ </small><p>{product.discountPrice2}</p><small> / {product.discountUnit2}{product.unit}</small></div> : null
                     }
                     { product.discountUnit3 ? 
-                         <><br/><small>P$ </small><span>{product.discountPrice3}</span><small> / {product.discountUnit3}{product.unit}</small></> : null
+                         <div className="row"><small>$ </small><p>{product.discountPrice3}</p><small> / {product.discountUnit3}{product.unit}</small></div> : null
                     }
+                    </div>
                     <div className="product__modalCounter">
                          <Fab 
                             color="default" 
                             aria-label="remove" 
                             size="small" 
-                            style={{margin:'auto 10px'}}
+                            style={{marginRight:20, backgroundColor: '#4DBBA3', color: '#fff'}}
                             onClick={removeQuantityHandler} >
                                 <RemoveIcon />
                         </Fab>
-                        <span>{purchaseState.quantity}{product.unit}</span>
+                        <span>{purchaseState.quantity} {product.unit}</span>
                         <Fab 
                             color="default" 
                             aria-label="add" 
                             size="small" 
-                            style={{margin:'auto 10px'}}
+                            style={{marginLeft:20, backgroundColor: '#4DBBA3', color: '#fff'}}
                             onClick={addQuantityHandler}>
                                 <AddIcon />
                         </Fab>
                     </div>
-                    <span>總計 ${Math.round(purchaseState.total)}</span>
-                    <br/><br/>
+                    <span className="modal__total">總計 ${Math.round(purchaseState.total)}</span>
                     { product.id === 122 ? 
                             <>
                                 {/* product election logic */}
@@ -234,7 +237,7 @@ function Product(props) {
                             </> : null}
                     <br/>
                     <Button 
-                        className="product__addButton" 
+                        className="product__modalAddButton" 
                         variant="contained" 
                         startIcon={<AddShoppingCartIcon />}
                         onClick={addButtonHandler}>確認數量

@@ -244,8 +244,7 @@ class Header extends Component {
                         <label className="drawer__warningText" style={{color:'gray', fontWeight:'bold'}}>订单确认送出后，将会有专员与您联系安排送货时间，货到付款。感谢您的订购！</label>
                         <br/>
                         <Button
-                            // type="submit"
-                            onClick={ () => alert('订单已寄出！ Pedido Enviado!') }
+                            type="submit"
                             variant="contained"
                             color="primary"
                             className="drawer__OrderListConfirmBtn"

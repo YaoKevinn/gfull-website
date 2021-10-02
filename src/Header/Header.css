@@ -7,8 +7,8 @@
     padding: 0 10%;
     margin: 0;
     z-index: 1; /* nothing showing above of this header */
-    border-bottom: 3px solid green;
-    box-shadow: 2px 2px 3px 2px gray;
+    border-bottom: 3px solid #4DBBA3;
+    box-shadow: 1px 0px 7px rgb(0 0 0 / 5%);
 }
 
 .header__logo {
@@ -41,12 +41,12 @@
     font-family: 'Noto Sans TC', sans-serif !important;
     font-size: 20px !important;
     font-weight: bold !important;
-    color: #007935 !important;
+    color: #4DBBA3 !important;
     
 }
 
 .header__shoppingCartIcon{
-    color: #007935;
+    color: #4DBBA3;
 }
 
 .header__drawer {

@@ -1,6 +1,6 @@
 {
-  "homepageGit": "http://gfullsa.com.ar",
-  "homepage": "https://yaokevinn.github.io/gfull-website/",
+  "homepage": "http://gfullsa.com.ar",
+  "homepageGit": "https://yaokevinn.github.io/gfull-website/",
   "name": "gfull-website",
   "version": "0.1.0",
   "private": true,
@@ -13,6 +13,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
+    "caniuse-lite": "^1.0.30001202",
     "emailjs-com": "^2.6.3",
     "firebase": "^7.19.0",
     "mdbreact": "^4.27.0",

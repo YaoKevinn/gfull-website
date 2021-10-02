@@ -1,64 +1,112 @@
 .product {
-    max-width: 230px;
+    width: 250px;
     margin: 15px 10px;
-    display: inline-block;
-}
-
-.product:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 8px 20px 0 rgba(0,0,0,.25) !important;
+    border-radius: 20px !important;
+    height: 360px;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
 }
 
 .productImage {
     width:100%;
     object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+.product__name {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    line-height: 18px !important;
+    color: #333;
+}
+
+.product-description-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 5px;
+    padding: 15px;
 }
 
 .product__chipStyle {
-    background-color: red !important;
-    color: white !important;
-    margin-right: 10px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
 }
 
 .product__descriptionSpan { 
     display: flex;
     margin-bottom: 10px !important;
+    line-height: 18px !important;
+}
+
+.bottom {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .productPrice {
     margin-left:2px;
     margin-right:2px;
+    color: #777;
+    font-size: 18px;
 }
 
 .product__priceSpan { 
     display: flex;
-    align-items: flex-end;
     justify-content: flex-end;
+    line-height: 18px !important;
+    font-size: 17px;
+    color: #777 !important;
 }
 
+.small-text {
+    font-size: 12px;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
 
 .product__addButton {
-    background-color: green !important ;
-    font-family: 'Noto Sans TC', sans-serif !important;
-    font-size: 15px !important;
-    font-weight: 300 !important;
-    color: white !important;
-    margin-top: 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4DBBA3 !important;
+    color: white  !important;
+    margin-top: 10px !important;
+    align-self: center;
 }
 
 .product__modalImg {
-    width: 50%;
+    height: 250px;
 }
 
 .product__modalDescription {
     margin: 0 auto;
-    padding: 20px 0;
-}
-
-.product__modalDescription > p {
-    font-family: 'Noto Sans TC', sans-serif !important;
-    font-size: 25px !important;
-    font-weight: 400 !important;
-    margin:10px 0;
+    paddingTop: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .product__modalDescription > span {
@@ -68,33 +116,88 @@
 }
 
 .product__modalCounter {
-    margin: 20px auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product__modalCounter > span {
     font-size: 20px;
 }
 
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.row > p {
+    position: relative;
+    top: -1px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.product__modalName {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.product__modalDesc {
+    font-size: 18px;
+    color: gray;
+    text-align: center;
+}
+
+.product__modalAddButton {
+    border-radius: 50px !important;
+    background-color: #4DBBA3 !important;
+    color: white  !important;
+    font-size: 20px !important;
+    padding: 10px 20px !important;
+}
+
+.priceSection {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.modal__total {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    font-weight: bold;
+}
+
 @media (max-width: 500px) {
     .product {
-        width: 160px;
-        min-height: 190px;
+        width: 180px;
+        height: 220px;
     }
 
     .productImageLazy{
         height: auto !important;
-        min-height: 100px;
+        min-height: 120px;
     }
 
     .productImage {
-        height: 100px;
+        height: 120px;
         object-fit: cover;
+    }
+
+    .product-description-section {
+        padding: 5px 10px 10px 10px;
+        margin-top: -5px;
     }
 
     .product__name {
         font-size: 12px !important;
         font-weight: bold !important;
         text-align: center !important;
+        line-height: 16px !important;
     }
 
     .product__descriptionSpan {
@@ -102,11 +205,12 @@
     }
 
     .productPrice{
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .red {
-        color: red !important;
+        color: #F44336 !important;
+        font-size: 10px !important;
     }
 
     .product__chipStyle {
@@ -141,5 +245,16 @@
         justify-content: center;
     }
 
+    .row {
+        flex-direction: row;
+    }
     
+}
+
+.modal-main {
+    border-radius: 20px !important;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
 }
