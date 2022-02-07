@@ -13,7 +13,7 @@ function Home() {
                     <div className="left">
                         <h1 className="hero-title"><b>禾富食品批发公司</b></h1>
                         <div className="hero-description-section">
-                            <p># 首都内满$7000免运</p>
+                            <p># 首都内满$9000免运</p>
                             <p># 首都城边满$12000免运</p>
                             <p># <strong>城外</strong>运费另计</p>
                         </div>

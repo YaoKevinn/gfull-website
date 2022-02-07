@@ -1,5 +1,6 @@
 import React,  { Component } from 'react'
-import { productsData } from './products'
+// import { productsData } from './products'
+// import { productsData } from '/products.json'
 import { db } from './firebase'
 import Header from './Header/Header'
 import Home from './Home/Home'
@@ -16,6 +17,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Divider from '@material-ui/core/Divider';
 import MultiSelectTreeView from './MultiSelectTreeView/MultiSelectTreeView';
+import Modal from './Product/Modal'
+const productsData = require('../public/products.json');
 
 
 class App extends Component {
@@ -95,10 +98,10 @@ class App extends Component {
       });
   }
 
-  getProductsFromJson = () => {
+  getProductsFromJson = (allProducts) => {
         const docs = [...this.state.products];
         const category = [...this.state.category];
-        productsData.forEach((doc) => {
+        productsData.products.forEach((doc) => {
               //   if (doc.data().id < 535){
                   docs.push({...doc});
                   const cat =  doc.category;
@@ -423,7 +426,7 @@ class App extends Component {
                                                             })
                                                 }
                                      </div>                                   
-                                </div>   
+                                </div>  
                                 <ContactForm />
                                 <Footer />
                             </Route>
