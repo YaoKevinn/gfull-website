@@ -329,6 +329,7 @@ class App extends Component {
 
   ignoreAccentsAndCase = (str) => {
     if (str) {
+        console.log(str);
         str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         str = str.toLowerCase();
         return str;
@@ -397,7 +398,7 @@ class App extends Component {
                                                         <p className="app__productSearchTitle">"{this.state.searchText}" 搜寻结果：</p>
                                                         {
                                                             this.state.products.map((product, index) => {
-                                                                if ((product.productName.includes(this.state.searchText) || this.ignoreAccentsAndCase(product.productDescription).includes(this.state.searchText)) && product.disponible === true ){
+                                                                if ((product.productName.includes(this.state.searchText) || product.productDescription.toLowerCase().includes(this.state.searchText.toLowerCase())) && product.disponible === true ){
                                                                     return <Product key={index} pObj={product} addToCart={this.productAddedHandler} calculateTotalPerItem={this.calculateTotalPerItem}/>
                                                                 }else{
                                                                     return null;
